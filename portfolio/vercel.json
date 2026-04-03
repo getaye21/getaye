@@ -1,7 +1,7 @@
 {
   "functions": {
     "backend/main.py": {
-      "runtime": "@vercel/python@4.0.0"
+      "runtime": "@vercel/python@3.12.0"
     }
   },
   "builds": [
@@ -10,7 +10,7 @@
       "use": "@vercel/python"
     },
     {
-      "src": "frontend/package.json",
+      "src": "frontend/**",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "frontend/dist"
