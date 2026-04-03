@@ -1,16 +1,16 @@
 {
   "functions": {
-    "backend/main.py": {
+    "api/index.py": {
       "runtime": "@vercel/python@3.9"
     }
   },
   "builds": [
     {
-      "src": "backend/main.py",
+      "src": "api/index.py",
       "use": "@vercel/python"
     },
     {
-      "src": "frontend/**",
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "frontend/dist"
@@ -20,7 +20,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/main.py"
+      "dest": "api/index.py"
     },
     {
       "src": "/(.*)",
