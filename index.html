@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Getaye Fiseha | System Admin & Full Stack Developer</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            transition: background-color 0.3s ease, color 0.2s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 3s infinite;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .glass-card {
+            background: rgba(30, 30, 40, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+            background: #3B82F6 !important;
+            color: white !important;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(59, 130, 246, 0.2);
+            border-top: 3px solid #3B82F6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            margin-left: 4px;
+            background-color: currentColor;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center flex-wrap">
+            <a href="#" class="text-2xl font-extrabold tracking-tight">
+                <span class="gradient-text">Getaye</span><span class="text-gray-800 dark:text-white">.dev</span>
+            </a>
+            <div class="flex items-center space-x-6 text-sm font-medium">
+                <a href="#home" class="nav-link hidden md:inline-block hover:text-blue-500 transition">Home</a>
+                <a href="#about" class="nav-link hidden md:inline-block hover:text-blue-500 transition">About</a>
+                <a href="#experience" class="nav-link hidden md:inline-block hover:text-blue-500 transition">Experience</a>
+                <a href="#certifications" class="nav-link hidden md:inline-block hover:text-blue-500 transition">Certs</a>
+                <a href="#projects" class="nav-link hidden md:inline-block hover:text-blue-500 transition">Projects</a>
+                <a href="#contact" class="nav-link hidden md:inline-block hover:text-blue-500 transition">Contact</a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                    <i class="fas fa-moon dark:hidden text-gray-700"></i>
+                    <i class="fas fa-sun hidden dark:inline-block text-yellow-300"></i>
+                </button>
+                <a href="https://github.com/getnet21" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-linkedin text-xl"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 md:px-12 py-8 max-w-6xl">
+        
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[85vh] flex flex-col justify-center items-center text-center md:text-left md:items-start md:flex-row md:justify-between gap-12 py-10">
+            <div class="flex-1 space-y-5">
+                <div class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-2">
+                    <i class="fas fa-code mr-1"></i> Available for opportunities
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+                    Hi, I'm <span class="gradient-text">Getaye Fiseha</span>
+                </h1>
+                <div class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl space-y-2">
+                    <p id="dynamic-title" class="font-medium"></p>
+                </div>
+                <p id="dynamic-bio" class="text-gray-600 dark:text-gray-400 max-w-2xl"></p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-3">
+                    <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fas fa-paper-plane"></i> Send Message</a>
+                    <a href="#projects" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub Projects</a>
+                </div>
+                <div class="flex flex-wrap gap-6 pt-6 justify-center md:justify-start text-sm">
+                    <div class="flex items-center gap-2"><i class="fab fa-github text-blue-500 text-xl"></i> <span id="gh-repos-count" class="font-bold">0</span> <span>repositories</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-users text-blue-500 text-xl"></i> <span id="gh-followers" class="font-bold">0</span> <span>followers</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-blue-500 text-xl"></i> <span id="gh-location">Addis Ababa, Ethiopia</span></div>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center">
+                <div class="relative animate-float">
+                    <img id="avatar-img" src="https://avatars.githubusercontent.com/getnet21" alt="Getaye profile" class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl object-cover">
+                    <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg">
+                        <i class="fas fa-laptop-code text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">About Me</h2>
+            </div>
+            <div class="glass-card rounded-2xl p-8 md:p-10 shadow-lg">
+                <p id="about-text" class="text-lg leading-relaxed"></p>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="hover:scale-105 transition"><i class="fas fa-server text-3xl text-blue-500 mb-2"></i><p class="font-semibold">System Admin</p></div>
+                    <div class="hover:scale-105 transition"><i class="fas fa-code text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Full Stack Dev</p></div>
+                    <div class="hover:scale-105 transition"><i class="fas fa-brain text-3xl text-blue-500 mb-2"></i><p class="font-semibold">AI Engineer</p></div>
+                    <div class="hover:scale-105 transition"><i class="fas fa-network-wired text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Network Eng</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="py-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold">Tech & Professional Skills <i class="fas fa-cogs text-blue-500"></i></h2>
+            </div>
+            <div id="skills-container" class="flex flex-wrap justify-center gap-3"></div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-12 scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold inline-block border-b-4 border-purple-500 pb-2">Work Experience</h2>
+                <p class="text-gray-500 mt-2">System Admin | Full Stack | AI Engineer | Network Engineer</p>
+            </div>
+            <div id="experience-list" class="grid md:grid-cols-2 gap-8"></div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="py-12">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold inline-block border-b-4 border-green-500 pb-2">Education</h2>
+            </div>
+            <div id="education-list" class="grid md:grid-cols-2 gap-6"></div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-12 scroll-mt-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-3xl my-6 p-6">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold inline-block border-b-4 border-green-500 pb-2">Certifications & Badges</h2>
+            </div>
+            <div id="certifications-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- GitHub Projects Section -->
+        <section id="projects" class="py-12 scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Live GitHub Projects</h2>
+                <p class="text-gray-500 mt-2">Fetched from github.com/getnet21</p>
+            </div>
+            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="col-span-full flex justify-center py-12"><div class="spinner"></div></div>
+            </div>
+        </section>
+
+        <!-- Contact Section with Message Form -->
+        <section id="contact" class="py-16 scroll-mt-20">
+            <div class="glass-card rounded-2xl p-8 md:p-10">
+                <h2 class="text-3xl font-bold mb-6 text-center">Let's Connect</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold mb-4"><i class="fas fa-address-card text-blue-500"></i> Contact Details</h3>
+                        <div class="flex items-center gap-3"><i class="fas fa-envelope w-6 text-blue-500"></i><span id="contact-email">getayefiseha21@gmail.com</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-phone w-6 text-blue-500"></i><span id="contact-phone">+251-980574725</span></div>
+                        <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt w-6 text-blue-500"></i><span>Addis Ababa, Ethiopia</span></div>
+                        <div class="flex items-center gap-3"><i class="fab fa-linkedin w-6 text-blue-500"></i><a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500">linkedin.com/in/getaye-fiseha-tadesse</a></div>
+                        <div class="flex items-center gap-3"><i class="fab fa-github w-6 text-blue-500"></i><a href="https://github.com/getnet21" target="_blank" class="hover:text-blue-500">github.com/getnet21</a></div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4"><i class="fas fa-paper-plane text-blue-500"></i> Send me a message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <input type="text" id="form-name" placeholder="Your name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none">
+                            <input type="email" id="form-email" placeholder="Your email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none">
+                            <input type="text" id="form-subject" placeholder="Subject" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none">
+                            <textarea id="form-message" rows="3" placeholder="Your message..." required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition transform hover:scale-105">Send Message <i class="fas fa-arrow-right"></i></button>
+                        </form>
+                        <div id="form-status" class="mt-3 text-sm text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 text-sm">
+            <p>© 2025 Getaye Fiseha Tadesse — System Administrator | Full Stack Developer | AI Engineer | Network Engineer</p>
+        </footer>
+    </main>
+
+    <div id="toast-message" class="toast hidden"></div>
+
+    <script>
+        // ==================== COMPLETE PORTFOLIO DATA (from your LinkedIn) ====================
+        const portfolioData = {
+            name: "Getaye Fiseha Tadesse",
+            titles: ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer"],
+            bio: "System and database administrator at Ahadu Bank with expertise in Active Directory, Oracle DB, Nutanix Prism, full-stack development, and AI research.",
+            aboutFull: "In addition to my academic achievements and internship experience, I am currently gaining valuable skills from my role as system and database administrator at Ahadu Bank. My responsibilities include Active Directory administration, mail exchange administration, Oracle database management, IT support, software troubleshooting, network support, and proficiency in programming languages such as HTML, CSS, and JavaScript. I am also experienced in using Nutanix Prism, AHV, and AOS Central.",
+            experiences: [
+                { title: "Junior System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "AD Administration, Oracle Database Administration, Mail exchange Administration, Nutanix Prism Administration, Virtualization, System Monitoring" },
+                { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, and cloud deployment on Vercel. Creating REST APIs and database integrations." },
+                { title: "AI Engineer (Research)", company: "Addis Ababa University", period: "2025 - Present", location: "Addis Ababa", description: "Developing machine learning models for social media addiction detection using AdaBoost algorithm. Working on predictive analytics and data processing." },
+                { title: "Information Technology Trainee", company: "Ahadu Bank", period: "Jul 2024 - Mar 2025", location: "Ethiopia", description: "Branch Support, End Device Inspection, Database Administration, System Active Directory, Mail exchange, Disk and VMs Management, Network monitoring and Troubleshooting, Software support" },
+                { title: "Appfactory Academy Intern", company: "Wollo University", period: "Feb 2023 - Jun 2023", location: "Kombolcha", description: "Project Progress on SD WSN, MATLAB coding, Electronic Engineering" }
+            ],
+            education: [
+                { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network and Security" },
+                { degree: "Bachelor of Science - Electrical and Computer Engineering", school: "Wollo University", year: "Oct 2018 – Sep 2023", gpa: "3.91" }
+            ],
+            certifications: [
+                { name: "Introduction to Cybersecurity", issuer: "Cisco", year: "Mar 2026" },
+                { name: "Networking Basics", issuer: "Cisco", year: "Feb 2026" },
+                { name: "NCA 6.10 Practice Exam", issuer: "Nutanix", year: "Jul 2025" },
+                { name: "Android Developer Fundamentals", issuer: "Udacity", year: "May 2025" },
+                { name: "Artificial Intelligence Fundamentals", issuer: "Udacity", year: "Apr 2025" },
+                { name: "JavaScript Algorithms & Data Structures", issuer: "freeCodeCamp", year: "Feb 2025" },
+                { name: "Responsive Web Design", issuer: "freeCodeCamp", year: "Feb 2025" },
+                { name: "Dereja Academy Accelerator", issuer: "Dereja", year: "Jul 2023" }
+            ],
+            skills: ["Active Directory", "Oracle DB", "Nutanix Prism", "Python", "React", "Node.js", "Machine Learning", "REST APIs", "JavaScript", "Tailwind CSS", "Docker", "Git", "Network Monitoring", "System Administration"],
+            contact: { email: "getayefiseha21@gmail.com", phone: "+251-980574725", location: "Addis Ababa, Ethiopia" }
+        };
+
+        // Typing animation for titles
+        let charIndex = 0;
+        const titleElement = document.getElementById("dynamic-title");
+        const fullTitle = portfolioData.titles.join(" | ");
+        
+        function typeTitle() {
+            if (titleElement && charIndex < fullTitle.length) {
+                titleElement.innerHTML = fullTitle.substring(0, charIndex + 1) + '<span class="typing-cursor">|</span>';
+                charIndex++;
+                setTimeout(typeTitle, 50);
+            } else if (titleElement) {
+                titleElement.innerHTML = fullTitle;
+            }
+        }
+        typeTitle();
+
+        // Populate UI with portfolio data
+        function populateUI() {
+            document.getElementById("dynamic-bio").innerText = portfolioData.bio;
+            document.getElementById("about-text").innerHTML = portfolioData.aboutFull;
+            document.getElementById("contact-email").innerHTML = portfolioData.contact.email;
+            document.getElementById("contact-phone").innerHTML = portfolioData.contact.phone;
+            
+            // Skills
+            const skillsContainer = document.getElementById("skills-container");
+            skillsContainer.innerHTML = portfolioData.skills.map(s => `<span class="skill-badge px-5 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm font-medium shadow-md transition cursor-pointer">${s}</span>`).join('');
+            
+            // Experience
+            const expContainer = document.getElementById("experience-list");
+            expContainer.innerHTML = portfolioData.experiences.map(exp => `
+                <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-purple-500 transition-all hover:shadow-xl">
+                    <h3 class="text-xl font-bold">${exp.title}</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-semibold">${exp.company} | ${exp.period}</p>
+                    <p class="text-gray-500 text-sm"><i class="fas fa-map-pin"></i> ${exp.location}</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-3">${exp.description}</p>
+                </div>
+            `).join('');
+            
+            // Education
+            const eduContainer = document.getElementById("education-list");
+            eduContainer.innerHTML = portfolioData.education.map(edu => `
+                <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold">${edu.degree}</h3>
+                    <p class="text-green-600 dark:text-green-400 font-semibold">${edu.school}</p>
+                    <p class="text-gray-500 text-sm">${edu.year}</p>
+                    ${edu.gpa ? `<p class="text-gray-500 text-sm">GPA: ${edu.gpa}</p>` : ''}
+                    ${edu.focus ? `<p class="text-gray-500 text-sm">Focus: ${edu.focus}</p>` : ''}
+                </div>
+            `).join('');
+            
+            // Certifications
+            const certContainer = document.getElementById("certifications-list");
+            certContainer.innerHTML = portfolioData.certifications.map(cert => `
+                <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800/80 shadow-md hover:shadow-blue-300/30 transition">
+                    <div class="flex items-start gap-3"><i class="fas fa-certificate text-2xl text-green-600"></i><div><h3 class="font-bold">${cert.name}</h3><p class="text-sm text-gray-500">${cert.issuer} • ${cert.year}</p></div></div>
+                </div>
+            `).join('');
+        }
+
+        // GitHub API fetch
+        async function fetchGitHubData() {
+            try {
+                const userRes = await fetch("https://api.github.com/users/getnet21");
+                if (userRes.ok) {
+                    const user = await userRes.json();
+                    document.getElementById("gh-repos-count").innerText = user.public_repos || 0;
+                    document.getElementById("gh-followers").innerText = user.followers || 0;
+                    if (user.location) document.getElementById("gh-location").innerText = user.location;
+                    const avatar = document.getElementById("avatar-img");
+                    if (user.avatar_url) avatar.src = user.avatar_url;
+                }
+                const reposRes = await fetch("https://api.github.com/users/getnet21/repos?sort=updated&per_page=6");
+                if (reposRes.ok) {
+                    const repos = await reposRes.json();
+                    const container = document.getElementById("projects-container");
+                    if (!repos.length) {
+                        container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">✨ No public repos yet, but amazing projects coming!</div>`;
+                    } else {
+                        container.innerHTML = repos.map(repo => `
+                            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between h-full">
+                                <div><div class="flex justify-between"><h3 class="text-xl font-bold truncate">${repo.name}</h3><span class="text-xs bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full">${repo.language || "Code"}</span></div>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">${repo.description ? repo.description.substring(0, 100) : "Check out this repository on GitHub!"}</p></div>
+                                <div class="mt-4 flex justify-between text-sm"><div class="flex gap-3"><span><i class="fas fa-star"></i> ${repo.stargazers_count}</span><span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span></div><a href="${repo.html_url}" target="_blank" class="text-blue-500 hover:underline">View <i class="fas fa-external-link-alt"></i></a></div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (err) {
+                console.warn("GitHub fetch limited");
+                document.getElementById("projects-container").innerHTML = `<div class="col-span-full text-center py-12">⚠️ Unable to load GitHub repos at this moment.</div>`;
+            }
+        }
+
+        // Contact form handler (stores messages in localStorage)
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+        
+        contactForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("form-name").value;
+            const email = document.getElementById("form-email").value;
+            const subject = document.getElementById("form-subject").value;
+            const message = document.getElementById("form-message").value;
+            
+            formStatus.innerHTML = '<span class="text-blue-500"><i class="fas fa-spinner fa-pulse"></i> Sending...</span>';
+            
+            setTimeout(() => {
+                const messages = JSON.parse(localStorage.getItem("portfolio_messages") || "[]");
+                messages.push({ name, email, subject, message, timestamp: new Date().toISOString() });
+                localStorage.setItem("portfolio_messages", JSON.stringify(messages));
+                formStatus.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.</span>';
+                contactForm.reset();
+                setTimeout(() => formStatus.innerHTML = "", 4000);
+            }, 800);
+        });
+
+        // Dark mode toggle
+        function initDarkMode() {
+            const toggle = document.getElementById("theme-toggle");
+            const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+            if (isDark) document.documentElement.classList.add("dark");
+            else document.documentElement.classList.remove("dark");
+            toggle?.addEventListener("click", () => {
+                if (document.documentElement.classList.contains("dark")) {
+                    document.documentElement.classList.remove("dark");
+                    localStorage.setItem("theme", "light");
+                } else {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("theme", "dark");
+                }
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                const href = this.getAttribute("href");
+                if (href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth" }); }
+            });
+        });
+
+        // Initialize everything
+        populateUI();
+        fetchGitHubData();
+        initDarkMode();
+    </script>
+</body>
+</html>
