@@ -2,356 +2,193 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Getaye Fiseha Tadesse | Full Stack Developer Portfolio</title>
-    <!-- Tailwind CSS + Font Awesome + Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getaye Fiseha | System Administrator & Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { transition: background-color 0.3s ease, color 0.2s ease; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
-        .dark ::-webkit-scrollbar-track { background: #2d2d2d; }
-        .dark ::-webkit-scrollbar-thumb { background: #5a5a5a; }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        .dark .glass-card {
-            background: rgba(30, 30, 40, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .glass-card:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.2); }
-        .gradient-text {
-            background: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: shimmer 3s infinite;
-        }
-        @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-            background: linear-gradient(90deg, #3B82F6, #A855F7); transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-        .skill-badge { transition: all 0.2s ease; }
-        .skill-badge:hover { transform: scale(1.05); background: #3B82F6; color: white; }
-        .spinner { border: 3px solid rgba(59,130,246,0.2); border-top: 3px solid #3B82F6; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .cert-card { transition: all 0.2s; }
-        .cert-card:hover { background: #3B82F6; color: white; transform: scale(1.02); }
-        .dark .cert-card:hover { background: #2563eb; }
+        .gradient-text { background: linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.15); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
 
-    <!-- ========== NAVIGATION ========== -->
-    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center flex-wrap">
-            <a href="#" class="text-2xl font-extrabold tracking-tight"><span class="gradient-text">Getaye</span><span class="text-gray-800 dark:text-white">.dev</span></a>
-            <div class="flex items-center space-x-6 text-sm font-medium">
-                <a href="#home" class="nav-link hidden md:inline-block">Home</a>
-                <a href="#about" class="nav-link hidden md:inline-block">About</a>
-                <a href="#experience" class="nav-link hidden md:inline-block">Experience</a>
-                <a href="#certifications" class="nav-link hidden md:inline-block">Certs</a>
-                <a href="#projects" class="nav-link hidden md:inline-block">Projects</a>
-                <a href="#contact" class="nav-link hidden md:inline-block">Contact</a>
-                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-                    <i class="fas fa-moon dark:hidden text-gray-700"></i>
-                    <i class="fas fa-sun hidden dark:inline-block text-yellow-300"></i>
-                </button>
-                <a href="https://github.com/getnet21" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-github text-xl"></i></a>
-                <a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-linkedin text-xl"></i></a>
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold"><span class="gradient-text">Getaye</span> Fiseha</a>
+            <div class="flex gap-6">
+                <a href="#experience" class="hover:text-blue-500 transition">Experience</a>
+                <a href="#projects" class="hover:text-blue-500 transition">Projects</a>
+                <a href="#certifications" class="hover:text-blue-500 transition">Certifications</a>
+                <a href="#contact" class="hover:text-blue-500 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-6 md:px-12 py-8 max-w-6xl">
+    <main class="container mx-auto px-6 py-12 max-w-5xl">
         
-        <!-- ========== HERO ========== -->
-        <section id="home" class="min-h-[85vh] flex flex-col justify-center items-center text-center md:text-left md:items-start md:flex-row md:justify-between gap-12 py-10">
-            <div class="flex-1 space-y-5">
-                <div class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-2"><i class="fas fa-code mr-1"></i> Full Stack Developer</div>
-                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">Hi, I'm <span class="gradient-text">Getaye Fiseha</span></h1>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl" id="dynamic-bio">Building high-impact web solutions & cloud-native apps.</p>
-                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-3">
-                    <a href="#projects" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fas fa-rocket"></i> View Work</a>
-                    <a href="#contact" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2"><i class="fas fa-paper-plane"></i> Contact Me</a>
-                    <a href="https://github.com/getnet21" target="_blank" class="px-6 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-xl shadow-lg transition hover:bg-gray-900 flex items-center gap-2"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-                <div class="flex flex-wrap gap-6 pt-6 justify-center md:justify-start text-sm">
-                    <div class="flex items-center gap-2"><i class="fab fa-github text-blue-500 text-xl"></i> <span id="gh-repos-count" class="font-bold">0</span> <span>repos</span></div>
-                    <div class="flex items-center gap-2"><i class="fas fa-users text-blue-500 text-xl"></i> <span id="gh-followers" class="font-bold">0</span> <span>followers</span></div>
-                    <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-blue-500 text-xl"></i> <span id="gh-location">Addis Ababa, Ethiopia</span></div>
-                </div>
-            </div>
-            <div class="flex-1 flex justify-center">
-                <div class="relative">
-                    <img id="avatar-img" src="https://avatars.githubusercontent.com/getnet21" alt="Getaye profile" class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl object-cover">
-                    <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg"><i class="fas fa-laptop-code text-white text-xl"></i></div>
-                </div>
+        <!-- Hero Section -->
+        <section class="text-center py-12">
+            <h1 class="text-5xl md:text-6xl font-extrabold">Getaye <span class="gradient-text">Fiseha Tadesse</span></h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 mt-4">System Administrator | Network & Electronic Communication Engineer</p>
+            <div class="flex justify-center gap-4 mt-6">
+                <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm"><i class="fas fa-building mr-2"></i>Ahadu Bank</span>
+                <span class="bg-green-100 dark:bg-green-900/40 text-green-700 px-4 py-2 rounded-full text-sm"><i class="fas fa-graduation-cap mr-2"></i>AAU MSc Candidate</span>
             </div>
         </section>
 
-        <!-- ========== ABOUT ========== -->
-        <section id="about" class="py-16 scroll-mt-20">
-            <div class="text-center mb-10"><h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">About Me</h2></div>
-            <div class="glass-card rounded-2xl p-8 md:p-10 shadow-lg">
-                <p class="text-lg leading-relaxed" id="about-text">Passionate software engineer with expertise in full-stack development, cloud computing, and AI integrations. I love building scalable applications and contributing to open-source. Based in Ethiopia, working globally.</p>
-                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                    <div><i class="fas fa-code text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Clean Code</p></div>
-                    <div><i class="fas fa-mobile-alt text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Responsive</p></div>
-                    <div><i class="fas fa-database text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Backend Pro</p></div>
-                    <div><i class="fas fa-cloud text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Cloud Native</p></div>
+        <!-- About Section (from your LinkedIn About) -->
+        <section class="mb-16">
+            <div class="bg-white dark:bg-gray-800/50 rounded-2xl p-8 shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-user-circle text-blue-500"></i> About Me</h2>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    In addition to my academic achievements and internship experience, I am currently gaining valuable skills from my role as system and database administrator at Ahadu Bank. 
+                    My responsibilities include Active Directory administration, mail exchange administration, Oracle database management, IT support, software troubleshooting, 
+                    network support, and proficiency in programming languages such as HTML, CSS, and JavaScript. I am also experienced in using Nutanix Prism, AHV, and AOS Central.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section (from your LinkedIn) -->
+        <section id="experience" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-2"><i class="fas fa-briefcase text-blue-500"></i> Work Experience</h2>
+            <div class="space-y-6">
+                <!-- Current Role -->
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md card-hover">
+                    <div class="flex flex-wrap justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold">Junior System and Database Officer</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-semibold">Ahadu Bank · Full-time</p>
+                            <p class="text-sm text-gray-500">Apr 2025 - Present · 1 yr 1 mo · Addis Ababa, Ethiopia</p>
+                        </div>
+                        <i class="fas fa-database text-3xl text-blue-500 opacity-50"></i>
+                    </div>
+                    <p class="mt-3 text-gray-600 dark:text-gray-300">AD Administration, Oracle Database Administration, Mail exchange Administration, Nutanix Prism Administration, Virtualization, System Monitoring</p>
+                </div>
+
+                <!-- IT Trainee -->
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold">Information Technology Trainee</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-semibold">Ahadu Bank · Full-time</p>
+                    <p class="text-sm text-gray-500">Jul 2024 - Mar 2025 · 9 mos · Ethiopia</p>
+                    <p class="mt-3 text-gray-600 dark:text-gray-300">Branch Support, End Device Inspection, Database Administration, System Active Directory, Mail exchange, Disk and VMs Management, Network monitoring and Troubleshooting, Software support</p>
+                </div>
+
+                <!-- Salesperson -->
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold">Salesperson</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-semibold">Safaricom Telecommunications Ethiopia · Contract</p>
+                    <p class="text-sm text-gray-500">Nov 2023 - Jun 2024 · 8 mos · Remote</p>
+                </div>
+
+                <!-- Internship -->
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md card-hover">
+                    <h3 class="text-xl font-bold">Appfactory Academy Intern</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-semibold">Wollo University</p>
+                    <p class="text-sm text-gray-500">Feb 2023 - Jun 2023 · 5 mos · Kombolcha</p>
+                    <p class="mt-3 text-gray-600 dark:text-gray-300">Project Progress on SD WSN, MATLAB coding, Electronic Engineering</p>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SKILLS (from LinkedIn) ========== -->
-        <section class="py-8">
-            <div class="text-center mb-10"><h2 class="text-3xl font-bold">Core Skills <i class="fas fa-cogs text-blue-500"></i></h2><p class="text-gray-500">Based on my LinkedIn expertise</p></div>
-            <div id="skills-container" class="flex flex-wrap justify-center gap-3"></div>
-        </section>
-
-        <!-- ========== EXPERIENCE (Full LinkedIn) ========== -->
-        <section id="experience" class="py-12 scroll-mt-20">
-            <div class="text-center mb-10"><h2 class="text-4xl font-bold inline-block border-b-4 border-purple-500 pb-2">Work Experience</h2><p class="text-gray-500 mt-2">Directly from my LinkedIn profile</p></div>
-            <div id="experience-list" class="grid md:grid-cols-2 gap-8"></div>
-        </section>
-
-        <!-- ========== CERTIFICATIONS (from LinkedIn) ========== -->
-        <section id="certifications" class="py-12 scroll-mt-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-3xl my-6 p-6">
-            <div class="text-center mb-10"><h2 class="text-4xl font-bold inline-block border-b-4 border-green-500 pb-2">Certifications & Badges</h2><p class="text-gray-600 dark:text-gray-300 mt-2">Professional credentials from LinkedIn & verified platforms</p></div>
-            <div id="certifications-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </section>
-
-        <!-- ========== GITHUB PROJECTS ========== -->
-        <section id="projects" class="py-12 scroll-mt-20">
-            <div class="text-center mb-10"><h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Live GitHub Projects</h2><p class="text-gray-500 mt-2">Fetched from github.com/getnet21</p></div>
-            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="col-span-full flex justify-center py-12"><div class="spinner"></div></div></div>
-            <div class="text-center mt-8"><a href="https://github.com/getnet21?tab=repositories" target="_blank" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:underline"><i class="fab fa-github"></i> Explore all repos →</a></div>
-        </section>
-
-        <!-- ========== CONTACT (full LinkedIn contact) ========== -->
-        <section id="contact" class="py-16 scroll-mt-20">
-            <div class="glass-card rounded-2xl p-8 md:p-10 text-center">
-                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
-                <p class="text-gray-600 dark:text-gray-300 max-w-lg mx-auto">Open for collaborations, mentoring, or tech talks. Reach out via any platform below.</p>
-                <div id="contact-links" class="flex flex-wrap justify-center gap-6 mt-8"></div>
-                <div class="mt-8 text-sm text-gray-500" id="contact-location">📍 Addis Ababa, Ethiopia | Open to remote worldwide</div>
+        <!-- Education -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-2"><i class="fas fa-graduation-cap text-green-500"></i> Education</h2>
+            <div class="space-y-4">
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold">Master of Science - Computer Science</h3>
+                    <p class="text-blue-600 dark:text-blue-400">Addis Ababa University (AAU)</p>
+                    <p class="text-sm text-gray-500">Oct 2025 – Jul 2028 · Network and Security Track</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold">Bachelor of Science - Electrical and Computer Engineering</h3>
+                    <p class="text-blue-600 dark:text-blue-400">Wollo University</p>
+                    <p class="text-sm text-gray-500">Oct 2018 – Sep 2023 · GPA: 3.91</p>
+                </div>
             </div>
         </section>
 
-        <footer class="py-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 text-sm">
-            <p>© 2025 Getaye Fiseha Tadesse — Powered by GitHub API & LinkedIn Data | Deployed on Vercel</p>
+        <!-- Projects (from your LinkedIn) -->
+        <section id="projects" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-2"><i class="fas fa-code text-purple-500"></i> Projects</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold">Social Media Addiction Risk Analyzer</h3>
+                    <p class="text-sm text-gray-500">Mar 2026 – Present</p>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">Machine Learning application using AdaBoost algorithm for addiction test and usage analysis.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-700 px-2 py-1 rounded-full text-xs">Machine Learning</span>
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-700 px-2 py-1 rounded-full text-xs">AdaBoost</span>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold">AAU Student Management System</h3>
+                    <p class="text-sm text-gray-500">Dec 2025</p>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">Student management website built on Supabase cloud database with CRUD operations.</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-700 px-2 py-1 rounded-full text-xs">REST APIs</span>
+                        <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-700 px-2 py-1 rounded-full text-xs">Supabase</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications (from your LinkedIn screenshots) -->
+        <section id="certifications" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-2"><i class="fas fa-certificate text-yellow-500"></i> Licenses & Certifications</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-shield-alt text-blue-500 mr-2"></i> <span class="font-semibold">Introduction to Cybersecurity</span><br><span class="text-sm text-gray-500">Cisco · Mar 2026</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-network-wired text-blue-500 mr-2"></i> <span class="font-semibold">Networking Basics</span><br><span class="text-sm text-gray-500">Cisco · Feb 2026</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-cloud text-blue-500 mr-2"></i> <span class="font-semibold">NCA 6.10 Practice Exam</span><br><span class="text-sm text-gray-500">Nutanix · Jul 2025</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fab fa-android text-green-500 mr-2"></i> <span class="font-semibold">Android Developer Fundamentals</span><br><span class="text-sm text-gray-500">Udacity · May 2025</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-microchip text-blue-500 mr-2"></i> <span class="font-semibold">Artificial Intelligence Fundamentals</span><br><span class="text-sm text-gray-500">Udacity · Apr 2025</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-chart-line text-blue-500 mr-2"></i> <span class="font-semibold">Data Analysis Fundamentals</span><br><span class="text-sm text-gray-500">Udacity · Mar 2025</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fab fa-js text-yellow-500 mr-2"></i> <span class="font-semibold">JavaScript Algorithms & Data Structures</span><br><span class="text-sm text-gray-500">freeCodeCamp · Feb 2025</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fab fa-css3 text-blue-500 mr-2"></i> <span class="font-semibold">Responsive Web Design</span><br><span class="text-sm text-gray-500">freeCodeCamp · Feb 2025</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-award text-purple-500 mr-2"></i> <span class="font-semibold">Dereja Academy Accelerator</span><br><span class="text-sm text-gray-500">Dereja · Jul 2023</span></div>
+                <div class="bg-white dark:bg-gray-800/50 rounded-lg p-4 shadow-sm"><i class="fas fa-laptop-code text-blue-500 mr-2"></i> <span class="font-semibold">Programming Fundamentals</span><br><span class="text-sm text-gray-500">Udacity · Aug 2024</span></div>
+            </div>
+        </section>
+
+        <!-- Skills (from your LinkedIn) -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-2"><i class="fas fa-cogs text-purple-500"></i> Technical Skills</h2>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Active Directory</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Oracle Database</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Nutanix Prism/AHV</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Mail Exchange</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">HTML/CSS/JavaScript</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Python</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Machine Learning</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">REST APIs</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Virtualization</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Network Monitoring</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">Kaspersky Antivirus</span>
+                <span class="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm">MATLAB</span>
+            </div>
+        </section>
+
+        <!-- Contact & GitHub -->
+        <section id="contact" class="text-center py-12 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800/30 dark:to-gray-800/30 rounded-2xl">
+            <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">Addis Ababa, Ethiopia · Open to opportunities</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/getnet21" target="_blank" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub: getnet21</a>
+                <a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-xl transition flex items-center gap-2"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+            <div class="mt-6 text-sm text-gray-500">
+                <i class="fas fa-envelope mr-2"></i> Available via LinkedIn message
+            </div>
+        </section>
+
+        <footer class="text-center py-8 text-gray-500 text-sm border-t border-gray-200 dark:border-gray-800 mt-12">
+            <p>© 2026 Getaye Fiseha Tadesse — Portfolio built with real LinkedIn data</p>
         </footer>
     </main>
-
-    <script>
-        // --------------------------------------------------------------
-        // COMPLETE LINKEDIN DATA (Experience, Certifications, Skills, Contacts)
-        // Replace these arrays with your ACTUAL LinkedIn data for 100% accuracy
-        // --------------------------------------------------------------
-        const linkedinFullData = {
-            // === ALL YOUR WORK EXPERIENCES (copy from LinkedIn) ===
-            experiences: [
-                { title: "Senior Full Stack Developer", company: "Ethio Tech Solutions", period: "2023 – Present", location: "Addis Ababa", description: "Leading development of enterprise-level web platforms, microservices with Node.js and React, mentoring 5 junior devs, improving performance by 40%." },
-                { title: "Software Engineer", company: "Innovate Ethiopia PLC", period: "2021 – 2023", location: "Remote", description: "Built RESTful APIs, integrated third-party payment gateways, and developed dashboard analytics using Next.js and MongoDB." },
-                { title: "Junior Developer & Intern", company: "Addis Software Lab", period: "2020 – 2021", location: "Addis Ababa", description: "Assisted in full-stack projects, bug fixing, and implemented responsive UI components with Tailwind and Vue.js." }
-            ],
-            // === ALL YOUR CERTIFICATIONS (from LinkedIn) ===
-            certifications: [
-                { name: "Meta Backend Developer Professional Certificate", issuer: "Coursera", year: "2024", credentialId: "ABC123", link: "#" },
-                { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", year: "2023", credentialId: "AWS12345", link: "#" },
-                { name: "JavaScript Algorithms and Data Structures", issuer: "freeCodeCamp", year: "2022", credentialId: "FCC-JS001", link: "#" },
-                { name: "Full Stack Open 2023", issuer: "University of Helsinki", year: "2023", credentialId: "FSO-2023", link: "#" },
-                { name: "Advanced React & GraphQL", issuer: "Frontend Masters", year: "2024", credentialId: "FM-REACT", link: "#" },
-                { name: "Google IT Automation with Python", issuer: "Google", year: "2023", credentialId: "G-PYTHON", link: "#" }
-            ],
-            // === YOUR SKILLS (from LinkedIn Skills section) ===
-            skills: ["JavaScript (ES6+)", "TypeScript", "React.js", "Next.js", "Node.js", "Express", "Python/Django", "Tailwind CSS", "MongoDB", "PostgreSQL", "Docker", "Git/GitHub Actions", "REST APIs", "GraphQL", "Vercel/AWS"],
-            // === CONTACT INFO from LinkedIn (public) ===
-            contact: {
-                email: "getaye.fiseha@example.com",  // update to your real email
-                phone: "+251 912 345678",
-                linkedin: "https://www.linkedin.com/in/getaye-fiseha-tadesse/",
-                github: "https://github.com/getnet21",
-                twitter: "https://twitter.com/getaye_t",  // optional
-                location: "Addis Ababa, Ethiopia"
-            }
-        };
-
-        // Render skills from LinkedIn data
-        function renderSkills() {
-            const skillsContainer = document.getElementById('skills-container');
-            if (!skillsContainer) return;
-            skillsContainer.innerHTML = linkedinFullData.skills.map(skill => 
-                `<span class="skill-badge px-5 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm font-medium shadow-md transition">${skill}</span>`
-            ).join('');
-        }
-
-        // Render work experiences (full)
-        function renderExperiences() {
-            const expContainer = document.getElementById('experience-list');
-            if (!expContainer) return;
-            expContainer.innerHTML = linkedinFullData.experiences.map(exp => `
-                <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-purple-500 transition-all hover:shadow-xl">
-                    <h3 class="text-xl font-bold">${exp.title}</h3>
-                    <p class="text-blue-600 dark:text-blue-400 font-semibold">${exp.company} | ${exp.period}</p>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm"><i class="fas fa-map-pin"></i> ${exp.location}</p>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-3 leading-relaxed">${exp.description}</p>
-                </div>
-            `).join('');
-        }
-
-        // Render certifications (full list)
-        function renderCertifications() {
-            const certContainer = document.getElementById('certifications-list');
-            if (!certContainer) return;
-            certContainer.innerHTML = linkedinFullData.certifications.map(cert => `
-                <div class="cert-card p-5 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-md hover:shadow-blue-300/30 transition-all duration-300">
-                    <div class="flex items-start gap-3">
-                        <i class="fas fa-certificate text-2xl text-green-600 dark:text-green-400"></i>
-                        <div>
-                            <h3 class="font-bold text-lg">${cert.name}</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">${cert.issuer} • ${cert.year}</p>
-                            <p class="text-xs text-gray-400 mt-1">Credential ID: ${cert.credentialId}</p>
-                            ${cert.link !== "#" ? `<a href="${cert.link}" target="_blank" class="text-blue-500 text-xs inline-flex items-center gap-1 mt-2 hover:underline">Verify <i class="fas fa-external-link-alt"></i></a>` : ''}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Render contact information dynamically
-        function renderContact() {
-            const contactDiv = document.getElementById('contact-links');
-            const locationSpan = document.getElementById('contact-location');
-            if (contactDiv) {
-                contactDiv.innerHTML = `
-                    <a href="mailto:${linkedinFullData.contact.email}" class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl transition shadow-md"><i class="fas fa-envelope"></i> ${linkedinFullData.contact.email}</a>
-                    <a href="${linkedinFullData.contact.linkedin}" target="_blank" class="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-xl transition"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="${linkedinFullData.contact.github}" target="_blank" class="flex items-center gap-2 bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 text-white px-6 py-3 rounded-xl transition"><i class="fab fa-github"></i> GitHub</a>
-                    ${linkedinFullData.contact.twitter ? `<a href="${linkedinFullData.contact.twitter}" target="_blank" class="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-xl transition"><i class="fab fa-twitter"></i> Twitter</a>` : ''}
-                    <a href="tel:${linkedinFullData.contact.phone}" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl transition"><i class="fas fa-phone-alt"></i> ${linkedinFullData.contact.phone}</a>
-                `;
-            }
-            if (locationSpan) {
-                locationSpan.innerHTML = `📍 ${linkedinFullData.contact.location} | 🌍 Open to remote worldwide | ✉️ ${linkedinFullData.contact.email}`;
-            }
-        }
-
-        // ---------- GITHUB API INTEGRATION (getnet21) ----------
-        const GITHUB_USER = 'getnet21';
-
-        async function fetchGitHubProfile() {
-            try {
-                const res = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
-                if (!res.ok) throw new Error();
-                const data = await res.json();
-                const avatar = document.getElementById('avatar-img');
-                if (avatar && data.avatar_url) avatar.src = data.avatar_url;
-                const repoCountSpan = document.getElementById('gh-repos-count');
-                if (repoCountSpan) repoCountSpan.innerText = data.public_repos || 0;
-                const followersSpan = document.getElementById('gh-followers');
-                if (followersSpan) followersSpan.innerText = data.followers || 0;
-                const locationSpan = document.getElementById('gh-location');
-                if (locationSpan && data.location) locationSpan.innerText = data.location;
-                const bioSpan = document.getElementById('dynamic-bio');
-                if (bioSpan && data.bio) bioSpan.innerText = data.bio;
-                const aboutP = document.getElementById('about-text');
-                if (aboutP && data.bio) aboutP.innerHTML = `${data.bio} I thrive on building scalable web apps, leading teams, and contributing to open source. Currently exploring AI integrations and cloud architecture.`;
-                return data;
-            } catch (err) {
-                console.warn("GitHub user fetch fallback");
-            }
-        }
-
-        async function fetchGitHubRepos() {
-            const container = document.getElementById('projects-container');
-            if (!container) return;
-            try {
-                const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=9&direction=desc`);
-                if (!res.ok) throw new Error();
-                const repos = await res.json();
-                if (!repos.length) {
-                    container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">No public repos found, but more coming soon! 🚀</div>`;
-                    return;
-                }
-                container.innerHTML = repos.map(repo => `
-                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between h-full transition-all duration-300 hover:shadow-2xl">
-                        <div>
-                            <div class="flex justify-between items-start">
-                                <h3 class="text-xl font-bold truncate">${repo.name}</h3>
-                                <span class="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full">${repo.language || 'Code'}</span>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-2 line-clamp-3">${repo.description ? repo.description.substring(0, 100) : 'Exciting project showcasing modern dev practices.'}</p>
-                        </div>
-                        <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
-                            <div class="flex gap-3"><span><i class="fas fa-star text-yellow-500"></i> ${repo.stargazers_count}</span><span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span></div>
-                            <a href="${repo.html_url}" target="_blank" class="text-blue-500 hover:underline flex items-center gap-1">View <i class="fas fa-external-link-alt text-xs"></i></a>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (err) {
-                console.error("Repo fetch error", err);
-                container.innerHTML = `<div class="col-span-full text-center py-12 text-red-500">⚠️ Unable to load GitHub projects. API rate limit?</div>`;
-            }
-        }
-
-        // ---------- DARK MODE & UTILITIES ----------
-        function initDarkMode() {
-            const toggle = document.getElementById('theme-toggle');
-            const isDark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            if (isDark) document.documentElement.classList.add('dark');
-            else document.documentElement.classList.remove('dark');
-            toggle?.addEventListener('click', () => {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        }
-
-        function smoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === "#" || href === "") return;
-                    const target = document.querySelector(href);
-                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-                });
-            });
-        }
-
-        // ---------- INIT ALL ----------
-        window.addEventListener('DOMContentLoaded', async () => {
-            initDarkMode();
-            smoothScroll();
-            // Render all LinkedIn sections (full experience, certs, skills, contact)
-            renderSkills();
-            renderExperiences();
-            renderCertifications();
-            renderContact();
-            // GitHub dynamic data
-            await fetchGitHubProfile();
-            await fetchGitHubRepos();
-            // update footer year
-            const footerPara = document.querySelector('footer p');
-            if (footerPara) footerPara.innerHTML = `© ${new Date().getFullYear()} Getaye Fiseha Tadesse — All experience, certs & skills from LinkedIn | Deployed on Vercel`;
-        });
-    </script>
-    <noscript>Enable JavaScript for interactive portfolio features.</noscript>
 </body>
 </html>
