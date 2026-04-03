@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from datetime import datetime
 import httpx
@@ -20,7 +21,6 @@ class ContactMessage(BaseModel):
     subject: str
     message: str
 
-# Your LinkedIn Data
 PROFILE_DATA = {
     "name": "Getaye Fiseha Tadesse",
     "titles": ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer"],
