@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const API_URL = import.meta.env.PROD ? '' : 'http://localhost:8000'
-
 function App() {
   const [profile, setProfile] = useState(null)
   const [repos, setRepos] = useState([])
@@ -21,8 +19,8 @@ function App() {
     const fetchData = async () => {
       try {
         const [profileRes, reposRes] = await Promise.all([
-          axios.get(`${API_URL}/api/profile`),
-          axios.get(`${API_URL}/api/github/repos`)
+          axios.get('/api/profile'),
+          axios.get('/api/github/repos')
         ])
         setProfile(profileRes.data)
         setRepos(reposRes.data)
@@ -50,7 +48,7 @@ function App() {
     e.preventDefault()
     setFormStatus('sending')
     try {
-      await axios.post(`${API_URL}/api/contact`, formData)
+      await axios.post('/api/contact', formData)
       setFormStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
       setTimeout(() => setFormStatus(''), 3000)
@@ -63,7 +61,7 @@ function App() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
-        <div className="spinner"></div>
+        <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     )
   }
@@ -74,7 +72,7 @@ function App() {
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <a href="#" className="text-2xl font-bold">
-            <span className="gradient-text">Getaye</span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Getaye</span>
             <span className="text-gray-800 dark:text-white">.dev</span>
           </a>
           <div className="flex items-center gap-6">
@@ -93,7 +91,7 @@ function App() {
       <main className="container mx-auto px-6 py-12 max-w-6xl">
         {/* Hero */}
         <section className="min-h-[70vh] flex flex-col justify-center text-center">
-          <h1 className="text-5xl md:text-6xl font-extrabold">Getaye <span className="gradient-text">Fiseha Tadesse</span></h1>
+          <h1 className="text-5xl md:text-6xl font-extrabold">Getaye <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Fiseha Tadesse</span></h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mt-4">{profile.titles.join(' | ')}</p>
           <p className="text-lg max-w-2xl mx-auto mt-6 text-gray-600 dark:text-gray-400">{profile.bio}</p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
@@ -169,7 +167,6 @@ function App() {
                 <div><i className="fas fa-envelope text-blue-500 w-6"></i> {profile.email}</div>
                 <div><i className="fas fa-phone text-blue-500 w-6"></i> {profile.phone}</div>
                 <div><i className="fas fa-map-marker-alt text-blue-500 w-6"></i> {profile.location}</div>
-                <div><i className="fab fa-linkedin text-blue-500 w-6"></i> <a href={profile.social.linkedin} target="_blank" className="hover:text-blue-500">LinkedIn Profile</a></div>
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input type="text" placeholder="Your Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900" />
