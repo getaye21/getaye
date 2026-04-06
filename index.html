@@ -250,14 +250,6 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
         }
-        
-        /* Image upload hint */
-        .image-hint {
-            font-size: 11px;
-            opacity: 0.7;
-            margin-top: 8px;
-            text-align: center;
-        }
     </style>
 </head>
 <body class="light">
@@ -326,17 +318,16 @@
             </div>
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
-                    <!-- Profile Image - Using GitHub avatar as reliable fallback -->
-                    <!-- To use your Imgur image: Right-click on your Imgur image, select "Copy image address", and replace the URL below -->
+                    <!-- NEW PROFILE IMAGE - Updated with your i.ibb.co URL -->
                     <img id="profile-img" 
-                         src="https://avatars.githubusercontent.com/u/55698552?v=4" 
+                         src="https://i.ibb.co/wrPd0w4F/5821188799877727355.jpg" 
                          alt="Getaye Fiseha"
+                         onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/55698552?v=4'"
                          class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl profile-img">
                     <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg animate-pulse">
                         <i class="fas fa-laptop-code text-white text-xl"></i>
                     </div>
                 </div>
-                <div class="image-hint text-gray-400">Profile photo: GitHub avatar active</div>
             </div>
         </section>
 
@@ -382,7 +373,7 @@
             <div id="education-list" class="grid md:grid-cols-2 gap-6"></div>
         </section>
 
-        <!-- Featured Projects Section (LinkedIn-style with BSc Thesis) -->
+        <!-- Featured Projects Section -->
         <section id="projects" class="py-12 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Featured Projects</h2>
@@ -567,7 +558,7 @@
         const portfolioData = {
             titles: ["System and Database Officer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
             bio: "Dedicated System and Database Officer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving at Ahadu Bank, managing mission-critical systems while pursuing MSc in Computer Science at AAU.",
-            aboutFull: "I am a passionate IT professional currently working as a System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python. I've developed machine learning models using AdaBoost and built student management systems. I'm deeply interested in research guidance, distributed computing, and prompt engineering.",
+            aboutFull: "I am a passionate IT professional currently working as a System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python.",
             experiences: [
                 { title: "System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
                 { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel." },
@@ -579,7 +570,6 @@
                 { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network Security, Distributed Computing, Research Methods" },
                 { degree: "Bachelor of Science - Electrical and Computer Engineering", school: "Wollo University", year: "Oct 2018 – Sep 2023", gpa: "3.91" }
             ],
-            // Updated projects: BSc thesis added, Distributed Computing Research replaced
             linkedinProjects: [
                 { name: "Social Media Addiction Risk Analyzer", description: "Machine Learning application using AdaBoost algorithm for addiction test and usage analysis. Developed predictive models to assess social media addiction risk levels.", tech: ["Python", "Scikit-learn", "AdaBoost", "Pandas"], year: "2026", link: "#" },
                 { name: "AAU Student Management System", description: "A complete student management platform built on Supabase cloud database with full CRUD operations, authentication, and responsive UI.", tech: ["React", "Supabase", "Tailwind CSS", "REST API"], year: "2025", link: "#" },
