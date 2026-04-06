@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Getaye Fiseha | System Admin & Full Stack Developer</title>
+    <title>Getaye Fiseha | System Admin & Infrastructure Engineer</title>
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -68,12 +68,6 @@
         @keyframes shimmer {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
-        }
-        
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(59,130,246,0); }
-            100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); }
         }
         
         .animate-fade-up {
@@ -144,7 +138,6 @@
             50% { opacity: 0; }
         }
         
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -159,12 +152,10 @@
             background: #3B82F6;
             border-radius: 10px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2563eb;
-        }
         
         .profile-img {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: cover;
         }
         
         .profile-img:hover {
@@ -175,7 +166,6 @@
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
 
-    <!-- Animated Background Canvas -->
     <canvas id="bg-canvas"></canvas>
     <div class="gradient-overlay"></div>
 
@@ -230,10 +220,11 @@
             </div>
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
+                    <!-- PROFILE PHOTO - Replace the src URL with your direct image link -->
                     <img id="profile-img" 
-                         src="https://imgur.com/a/aXJdKCn" 
+                         src="https://avatars.githubusercontent.com/getnet21" 
                          alt="Getaye Fiseha"
-                         class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl object-cover profile-img">
+                         class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl profile-img">
                     <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg animate-pulse">
                         <i class="fas fa-laptop-code text-white text-xl"></i>
                     </div>
@@ -241,7 +232,7 @@
             </div>
         </section>
 
-        <!-- About Section - Updated Professional Bio -->
+        <!-- About Section -->
         <section id="about" class="py-16 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">About Me</h2>
@@ -252,16 +243,16 @@
                     <div class="hover:scale-105 transition"><i class="fas fa-server text-3xl text-blue-500 mb-2"></i><p class="font-semibold">System Admin</p></div>
                     <div class="hover:scale-105 transition"><i class="fas fa-code text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Full Stack Dev</p></div>
                     <div class="hover:scale-105 transition"><i class="fas fa-brain text-3xl text-blue-500 mb-2"></i><p class="font-semibold">AI Engineer</p></div>
-                    <div class="hover:scale-105 transition"><i class="fas fa-cloud text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Cloud Computing</p></div>
+                    <div class="hover:scale-105 transition"><i class="fas fa-building text-3xl text-blue-500 mb-2"></i><p class="font-semibold">Infrastructure Eng</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Enhanced Skills Section with all new skills from images -->
+        <!-- Skills Section -->
         <section id="skills" class="py-8 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold">Core Competencies <i class="fas fa-cogs text-blue-500"></i></h2>
-                <p class="text-gray-500 mt-2">System Administration | Cloud | AI | Development</p>
+                <p class="text-gray-500 mt-2">System Administration | Infrastructure | AI | Development</p>
             </div>
             <div id="skills-container" class="flex flex-wrap justify-center gap-3"></div>
         </section>
@@ -270,7 +261,7 @@
         <section id="experience" class="py-12 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold inline-block border-b-4 border-purple-500 pb-2">Work Experience</h2>
-                <p class="text-gray-500 mt-2">System Admin | Full Stack | AI Engineer | Network Engineer</p>
+                <p class="text-gray-500 mt-2">System Admin | Full Stack | AI Engineer | Infrastructure Engineer</p>
             </div>
             <div id="experience-list" class="grid md:grid-cols-2 gap-8"></div>
         </section>
@@ -302,7 +293,7 @@
             </div>
         </section>
 
-        <!-- Contact Section with Message Form -->
+        <!-- Contact Section -->
         <section id="contact" class="py-16 scroll-mt-20">
             <div class="glass-card rounded-2xl p-8 md:p-10">
                 <h2 class="text-3xl font-bold mb-6 text-center">Let's Connect</h2>
@@ -331,12 +322,12 @@
         </section>
 
         <footer class="py-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 text-sm">
-            <p>© 2026 Getaye Fiseha Tadesse — System Administrator | Full Stack Developer | AI Engineer | Cloud Engineer</p>
+            <p>© 2025 Getaye Fiseha Tadesse — System Administrator | Full Stack Developer | AI Engineer | Infrastructure Engineer</p>
         </footer>
     </main>
 
     <script>
-        // ==================== ANIMATED BACKGROUND (Particle Network) ====================
+        // Animated Background
         const canvas = document.getElementById('bg-canvas');
         let ctx = canvas.getContext('2d');
         let particles = [];
@@ -345,8 +336,6 @@
         function initCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            
-            // Create particles
             particles = [];
             const particleCount = Math.min(80, Math.floor(window.innerWidth * 0.05));
             for (let i = 0; i < particleCount; i++) {
@@ -356,7 +345,6 @@
                     radius: Math.random() * 2 + 1,
                     vx: (Math.random() - 0.5) * 0.5,
                     vy: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.3 + 0.1
                 });
             }
         }
@@ -364,8 +352,6 @@
         function drawBackground() {
             if (!ctx) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw connections
             ctx.strokeStyle = document.documentElement.classList.contains('dark') ? 'rgba(59,130,246,0.15)' : 'rgba(59,130,246,0.2)';
             ctx.lineWidth = 0.8;
             
@@ -373,8 +359,7 @@
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 120) {
+                    if (Math.sqrt(dx * dx + dy * dy) < 120) {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -383,50 +368,38 @@
                 }
             }
             
-            // Draw particles
             for (let p of particles) {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = document.documentElement.classList.contains('dark') ? 'rgba(59,130,246,0.4)' : 'rgba(59,130,246,0.5)';
                 ctx.fill();
-                
-                // Update position
                 p.x += p.vx;
                 p.y += p.vy;
-                
-                // Boundary check
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
             }
-            
             animationId = requestAnimationFrame(drawBackground);
         }
         
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initCanvas();
-        }
-        
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', () => { initCanvas(); });
         initCanvas();
         drawBackground();
 
-        // ==================== COMPLETE PORTFOLIO DATA (Enhanced with new skills) ====================
+        // Portfolio Data
         const portfolioData = {
             name: "Getaye Fiseha Tadesse",
-            titles: ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer", "Cloud Engineer"],
-            bio: "Results-driven System Administrator and Full Stack Developer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and cloud infrastructure. Currently serving as Junior System and Database Officer at Ahadu Bank, managing enterprise IT operations while pursuing MSc in Computer Science at AAU with focus on Network Security and AI.",
-            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between system administration and modern software development.\n\nMy technical arsenal includes Linux system administration, cloud computing (Azure/AWS fundamentals), prompt engineering for AI models, and full-stack development with React, Node.js, and Python. I've developed machine learning models for social media addiction detection using AdaBoost and built student management systems with Supabase. I'm deeply interested in research guidance, distributed computing, and exploring cutting-edge AI technologies.\n\nI thrive in environments that challenge me to solve complex problems, whether it's troubleshooting network issues, optimizing database performance, or architecting scalable web applications. Open to collaborations in system architecture, cloud migration, AI research, and mentoring aspiring developers.",
+            titles: ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
+            bio: "Results-driven System Administrator and Infrastructure Engineer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving as Junior System and Database Officer at Ahadu Bank, managing mission-critical systems while pursuing MSc in Computer Science at AAU.",
+            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python. I've developed machine learning models using AdaBoost and built student management systems. I'm deeply interested in research guidance, distributed computing, and prompt engineering.\n\nI thrive in environments that challenge me to solve complex infrastructure problems, whether it's optimizing database performance, managing enterprise systems, or architecting scalable applications.",
             experiences: [
-                { title: "Junior System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database Administration, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and system monitoring. Responsible for enterprise IT infrastructure and security." },
-                { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel. Creating REST APIs and integrating AI capabilities." },
-                { title: "AI Engineer (Research)", company: "Addis Ababa University", period: "2025 - Present", location: "Addis Ababa", description: "Research Guidance in Machine Learning, developing predictive models using AdaBoost algorithm for social media addiction detection. Exploring prompt engineering and LLM applications." },
-                { title: "Information Technology Trainee", company: "Ahadu Bank", period: "Jul 2024 - Mar 2025", location: "Ethiopia", description: "Branch Support, End Device Inspection, Database Administration, Active Directory, Mail Exchange, Hyper-Converged Infrastructure (Nutanix), Network monitoring, Software troubleshooting, Microsoft Outlook/Products support." },
-                { title: "Appfactory Academy Intern", company: "Wollo University", period: "Feb 2023 - Jun 2023", location: "Kombolcha", description: "Project Progress on SD WSN, MATLAB coding, Electronic Engineering fundamentals." }
+                { title: "Junior System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
+                { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel." },
+                { title: "AI Engineer (Research)", company: "Addis Ababa University", period: "2025 - Present", location: "Addis Ababa", description: "Research Guidance in Machine Learning, developing predictive models using AdaBoost algorithm for social media addiction detection." },
+                { title: "Information Technology Trainee", company: "Ahadu Bank", period: "Jul 2024 - Mar 2025", location: "Ethiopia", description: "Branch Support, Database Administration, Active Directory, Mail Exchange, Hyper-Converged Infrastructure (Nutanix), Network monitoring." },
+                { title: "Appfactory Academy Intern", company: "Wollo University", period: "Feb 2023 - Jun 2023", location: "Kombolcha", description: "Project Progress on SD WSN, MATLAB coding, Electronic Engineering." }
             ],
             education: [
-                { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network Security, Distributed Computing, Research Methods, Data Management Systems, Software Project Management" },
+                { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network Security, Distributed Computing, Research Methods" },
                 { degree: "Bachelor of Science - Electrical and Computer Engineering", school: "Wollo University", year: "Oct 2018 – Sep 2023", gpa: "3.91" }
             ],
             certifications: [
@@ -440,23 +413,18 @@
                 { name: "Dereja Academy Accelerator", issuer: "Dereja", year: "Jul 2023" }
             ],
             skills: [
-                // System Administration
-                "Linux System Administration", "Oracle Enterprise Linux", "Active Directory", "Group Policy", "DNS",
+                "Linux Administration", "Oracle Enterprise Linux", "Active Directory", "Group Policy", "DNS",
                 "Mail Exchange", "Web Application Proxy (WAP)", "AD-FS", "Troubleshooting",
-                // Virtualization & Cloud
-                "Nutanix Prism/AHV", "Virtualization", "Hyper-Converged Infrastructure", "Prism Central", "Cloud Computing",
-                "Cloud Database (DBaaS)", "Distributed Computing",
-                // Development
-                "Python", "React.js", "Node.js", "JavaScript", "Tailwind CSS", "REST APIs", "Responsive Web Design",
-                // AI & Research
-                "Machine Learning", "Prompt Engineering", "Research Guidance", "AdaBoost Algorithm",
-                // Tools & Other
-                "Docker", "Git", "Microsoft Products", "Microsoft Outlook", "Operating Systems", "Software Troubleshooting"
+                "Nutanix Prism/AHV", "Virtualization", "Hyper-Converged Infrastructure", "Prism Central",
+                "Infrastructure Engineering", "Cloud Database (DBaaS)", "Distributed Computing",
+                "Python", "React.js", "Node.js", "JavaScript", "Tailwind CSS", "REST APIs",
+                "Machine Learning", "Prompt Engineering", "Research Guidance", "AdaBoost",
+                "Docker", "Git", "Microsoft Products", "Operating Systems"
             ],
             contact: { email: "getayefiseha21@gmail.com", phone: "+251-980574725", location: "Addis Ababa, Ethiopia" }
         };
 
-        // Typing animation for titles
+        // Typing animation
         let charIndex = 0;
         const titleElement = document.getElementById("dynamic-title");
         const fullTitle = portfolioData.titles.join(" | ");
@@ -472,18 +440,15 @@
         }
         typeTitle();
 
-        // Populate UI with portfolio data
         function populateUI() {
             document.getElementById("dynamic-bio").innerText = portfolioData.bio;
             document.getElementById("about-text").innerHTML = portfolioData.aboutFull;
             document.getElementById("contact-email").innerHTML = portfolioData.contact.email;
             document.getElementById("contact-phone").innerHTML = portfolioData.contact.phone;
             
-            // Skills - Enhanced with all new skills
             const skillsContainer = document.getElementById("skills-container");
             skillsContainer.innerHTML = portfolioData.skills.map(s => `<span class="skill-badge px-5 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm font-medium shadow-md transition">${s}</span>`).join('');
             
-            // Experience
             const expContainer = document.getElementById("experience-list");
             expContainer.innerHTML = portfolioData.experiences.map(exp => `
                 <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-purple-500 transition-all hover:shadow-xl">
@@ -494,7 +459,6 @@
                 </div>
             `).join('');
             
-            // Education
             const eduContainer = document.getElementById("education-list");
             eduContainer.innerHTML = portfolioData.education.map(edu => `
                 <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-green-500">
@@ -506,7 +470,6 @@
                 </div>
             `).join('');
             
-            // Certifications
             const certContainer = document.getElementById("certifications-list");
             certContainer.innerHTML = portfolioData.certifications.map(cert => `
                 <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800/80 shadow-md hover:shadow-blue-300/30 transition">
@@ -515,7 +478,6 @@
             `).join('');
         }
 
-        // GitHub API fetch
         async function fetchGitHubData() {
             try {
                 const userRes = await fetch("https://api.github.com/users/getnet21");
@@ -535,19 +497,17 @@
                         container.innerHTML = repos.map(repo => `
                             <div class="glass-card rounded-2xl p-6 flex flex-col justify-between h-full">
                                 <div><div class="flex justify-between"><h3 class="text-xl font-bold truncate">${repo.name}</h3><span class="text-xs bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full">${repo.language || "Code"}</span></div>
-                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">${repo.description ? repo.description.substring(0, 100) : "Check out this repository on GitHub!"}</p></div>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">${repo.description ? repo.description.substring(0, 100) : "Check out this repository!"}</p></div>
                                 <div class="mt-4 flex justify-between text-sm"><div class="flex gap-3"><span><i class="fas fa-star"></i> ${repo.stargazers_count}</span><span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span></div><a href="${repo.html_url}" target="_blank" class="text-blue-500 hover:underline">View <i class="fas fa-external-link-alt"></i></a></div>
                             </div>
                         `).join('');
                     }
                 }
             } catch (err) {
-                console.warn("GitHub fetch limited");
-                document.getElementById("projects-container").innerHTML = `<div class="col-span-full text-center py-12">⚠️ Unable to load GitHub repos at this moment.</div>`;
+                document.getElementById("projects-container").innerHTML = `<div class="col-span-full text-center py-12">⚠️ Unable to load GitHub repos.</div>`;
             }
         }
 
-        // Contact form handler
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
         
@@ -570,7 +530,6 @@
             }, 800);
         });
 
-        // Dark mode toggle with background update
         function initDarkMode() {
             const toggle = document.getElementById("theme-toggle");
             const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
@@ -584,12 +543,10 @@
                     document.documentElement.classList.add("dark");
                     localStorage.setItem("theme", "dark");
                 }
-                // Refresh background colors
                 if (ctx) drawBackground();
             });
         }
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function(e) {
                 const href = this.getAttribute("href");
@@ -599,7 +556,6 @@
             });
         });
 
-        // Initialize everything
         populateUI();
         fetchGitHubData();
         initDarkMode();
