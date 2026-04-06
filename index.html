@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Getaye Fiseha | System Admin & Infrastructure Engineer</title>
+    <title>Getaye Fiseha Tadesse | System Admin & Infrastructure Engineer</title>
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -23,7 +23,19 @@
             overflow-x: hidden;
         }
         
-        /* Animated Background - Particle Network Effect */
+        /* Light mode default colors */
+        body.light {
+            background-color: #f9fafb;
+            color: #111827;
+        }
+        
+        /* Dark mode colors */
+        body.dark {
+            background-color: #030712;
+            color: #f9fafb;
+        }
+        
+        /* Animated Background */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -41,11 +53,15 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.08), rgba(139,92,246,0.05), transparent);
             pointer-events: none;
+            transition: opacity 0.3s ease;
         }
         
-        .dark .gradient-overlay {
+        body.light .gradient-overlay {
+            background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.08), rgba(139,92,246,0.05), transparent);
+        }
+        
+        body.dark .gradient-overlay {
             background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.12), rgba(139,92,246,0.08), transparent);
         }
         
@@ -100,7 +116,7 @@
             transition: all 0.3s ease;
         }
         
-        .dark .glass-card {
+        body.dark .glass-card {
             background: rgba(30, 30, 40, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -116,7 +132,7 @@
             animation: borderPulse 2s infinite;
         }
         
-        .dark .opportunity-card {
+        body.dark .opportunity-card {
             background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15));
         }
         
@@ -161,7 +177,7 @@
             background: #f1f1f1;
             border-radius: 10px;
         }
-        .dark ::-webkit-scrollbar-track {
+        body.dark ::-webkit-scrollbar-track {
             background: #1a1a2e;
         }
         ::-webkit-scrollbar-thumb {
@@ -179,7 +195,54 @@
             box-shadow: 0 0 0 5px rgba(59,130,246,0.3);
         }
         
-        /* LinkedIn-style project card */
+        /* Profile Dropdown */
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            min-width: 260px;
+            background: white;
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            z-index: 100;
+            border: 1px solid rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        body.dark .dropdown-content {
+            background: #1f2937;
+            border-color: rgba(255,255,255,0.1);
+        }
+        
+        .profile-dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            transition: background 0.2s;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        body.dark .dropdown-item {
+            border-bottom-color: rgba(255,255,255,0.05);
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(59,130,246,0.1);
+        }
+        
         .linkedin-project-card {
             transition: all 0.3s ease;
         }
@@ -189,29 +252,45 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
-
+<body class="light">
     <canvas id="bg-canvas"></canvas>
     <div class="gradient-overlay"></div>
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center flex-wrap">
-            <a href="#" class="text-2xl font-extrabold tracking-tight">
-                <span class="gradient-text">Getaye</span><span class="text-gray-800 dark:text-white">.dev</span>
+            <a href="#" class="text-xl md:text-2xl font-extrabold tracking-tight">
+                <span class="gradient-text">Getaye Fiseha Tadesse</span>
             </a>
-            <div class="flex items-center space-x-6 text-sm font-medium">
+            <div class="flex items-center space-x-4 md:space-x-6 text-sm font-medium">
                 <a href="#home" class="hidden md:inline-block hover:text-blue-500 transition">Home</a>
                 <a href="#about" class="hidden md:inline-block hover:text-blue-500 transition">About</a>
                 <a href="#experience" class="hidden md:inline-block hover:text-blue-500 transition">Experience</a>
                 <a href="#skills" class="hidden md:inline-block hover:text-blue-500 transition">Skills</a>
                 <a href="#projects" class="hidden md:inline-block hover:text-blue-500 transition">Projects</a>
-                <a href="#certifications" class="hidden md:inline-block hover:text-blue-500 transition">Certs</a>
                 <a href="#contact" class="hidden md:inline-block hover:text-blue-500 transition">Contact</a>
+                
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <button class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition flex items-center gap-2">
+                        <i class="fas fa-user-circle text-lg"></i>
+                        <span class="hidden md:inline text-sm">Profile</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item"><i class="fas fa-user w-5 text-blue-500"></i><span><strong>Getaye Fiseha Tadesse</strong></span></div>
+                        <div class="dropdown-item"><i class="fas fa-birthday-cake w-5 text-pink-500"></i><span>May 01, 1999</span></div>
+                        <div class="dropdown-item"><i class="fas fa-envelope w-5 text-blue-500"></i><span>getayefiseha21@gmail.com</span></div>
+                        <div class="dropdown-item"><i class="fab fa-linkedin w-5 text-blue-600"></i><a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500">View LinkedIn</a></div>
+                        <div class="dropdown-item"><i class="fas fa-map-marker-alt w-5 text-red-500"></i><span>Addis Ababa, Ethiopia</span></div>
+                    </div>
+                </div>
+                
+                <!-- Dark/Light Mode Toggle - Sun Icon -->
                 <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-                    <i class="fas fa-moon dark:hidden text-gray-700"></i>
-                    <i class="fas fa-sun hidden dark:inline-block text-yellow-300"></i>
+                    <i id="theme-icon" class="fas fa-sun text-yellow-500"></i>
                 </button>
+                
                 <a href="https://github.com/getnet21" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-github text-xl"></i></a>
                 <a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-linkedin text-xl"></i></a>
             </div>
@@ -243,7 +322,7 @@
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
                     <img id="profile-img" 
-                         src="https://avatars.githubusercontent.com/getnet21" 
+                         src="https://avatars.githubusercontent.com/u/55698552?v=4" 
                          alt="Getaye Fiseha"
                          onerror="this.src='https://ui-avatars.com/api/?name=Getaye+Fiseha&background=3B82F6&color=fff&size=200'"
                          class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl profile-img">
@@ -296,7 +375,7 @@
             <div id="education-list" class="grid md:grid-cols-2 gap-6"></div>
         </section>
 
-        <!-- LinkedIn-Style Projects Section (from your LinkedIn) -->
+        <!-- LinkedIn-Style Projects Section -->
         <section id="projects" class="py-12 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Featured Projects</h2>
@@ -324,7 +403,7 @@
             <div id="certifications-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </section>
 
-        <!-- Available Opportunities Banner (Above Contact) -->
+        <!-- Available Opportunities Banner -->
         <div class="my-8 opportunity-card rounded-2xl p-6 text-center backdrop-blur-sm">
             <div class="flex flex-wrap items-center justify-center gap-4">
                 <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold animate-pulse"><i class="fas fa-bullhorn mr-2"></i> Available for Opportunities</span>
@@ -367,6 +446,58 @@
     </main>
 
     <script>
+        // ==================== THEME TOGGLE (Sun Icon - Changes entire page) ====================
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                if (themeIcon) {
+                    themeIcon.className = 'fas fa-moon';
+                    themeIcon.style.color = '#9ca3af';
+                }
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                if (themeIcon) {
+                    themeIcon.className = 'fas fa-sun';
+                    themeIcon.style.color = '#eab308';
+                }
+            }
+        }
+        
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (themeIcon) {
+                    themeIcon.className = 'fas fa-moon';
+                    themeIcon.style.color = '#9ca3af';
+                }
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                if (themeIcon) {
+                    themeIcon.className = 'fas fa-sun';
+                    themeIcon.style.color = '#eab308';
+                }
+            }
+            
+            // Refresh background particle colors
+            if (window.particlesRefresh) window.particlesRefresh();
+        }
+        
+        document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+        initTheme();
+
         // ==================== ANIMATED BACKGROUND ====================
         const canvas = document.getElementById('bg-canvas');
         let ctx = canvas.getContext('2d');
@@ -391,7 +522,8 @@
         function drawBackground() {
             if (!ctx) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = document.documentElement.classList.contains('dark') ? 'rgba(59,130,246,0.15)' : 'rgba(59,130,246,0.2)';
+            const isDark = document.body.classList.contains('dark');
+            ctx.strokeStyle = isDark ? 'rgba(59,130,246,0.15)' : 'rgba(59,130,246,0.2)';
             ctx.lineWidth = 0.8;
             
             for (let i = 0; i < particles.length; i++) {
@@ -410,7 +542,7 @@
             for (let p of particles) {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = document.documentElement.classList.contains('dark') ? 'rgba(59,130,246,0.4)' : 'rgba(59,130,246,0.5)';
+                ctx.fillStyle = isDark ? 'rgba(59,130,246,0.4)' : 'rgba(59,130,246,0.5)';
                 ctx.fill();
                 p.x += p.vx;
                 p.y += p.vy;
@@ -420,16 +552,16 @@
             requestAnimationFrame(drawBackground);
         }
         
+        window.particlesRefresh = () => { initCanvas(); };
         window.addEventListener('resize', () => { initCanvas(); });
         initCanvas();
         drawBackground();
 
         // ==================== PORTFOLIO DATA ====================
         const portfolioData = {
-            name: "Getaye Fiseha Tadesse",
             titles: ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
             bio: "Results-driven System Administrator and Infrastructure Engineer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving as Junior System and Database Officer at Ahadu Bank.",
-            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python. I've developed machine learning models using AdaBoost and built student management systems. I'm deeply interested in research guidance, distributed computing, and prompt engineering.",
+            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python.",
             experiences: [
                 { title: "Junior System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
                 { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel." },
@@ -441,7 +573,6 @@
                 { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network Security, Distributed Computing, Research Methods" },
                 { degree: "Bachelor of Science - Electrical and Computer Engineering", school: "Wollo University", year: "Oct 2018 – Sep 2023", gpa: "3.91" }
             ],
-            // LinkedIn-style projects (from your actual LinkedIn)
             linkedinProjects: [
                 { name: "Social Media Addiction Risk Analyzer", description: "Machine Learning application using AdaBoost algorithm for addiction test and usage analysis. Developed predictive models to assess social media addiction risk levels.", tech: ["Python", "Scikit-learn", "AdaBoost", "Pandas"], year: "2026", link: "#" },
                 { name: "AAU Student Management System", description: "A complete student management platform built on Supabase cloud database with full CRUD operations, authentication, and responsive UI.", tech: ["React", "Supabase", "Tailwind CSS", "REST API"], year: "2025", link: "#" },
@@ -491,13 +622,8 @@
             document.getElementById("contact-email").innerHTML = portfolioData.contact.email;
             document.getElementById("contact-phone").innerHTML = portfolioData.contact.phone;
             
-            // Skills
-            const skillsContainer = document.getElementById("skills-container");
-            skillsContainer.innerHTML = portfolioData.skills.map(s => `<span class="skill-badge px-5 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm font-medium shadow-md transition">${s}</span>`).join('');
-            
-            // Experience
-            const expContainer = document.getElementById("experience-list");
-            expContainer.innerHTML = portfolioData.experiences.map(exp => `
+            document.getElementById("skills-container").innerHTML = portfolioData.skills.map(s => `<span class="skill-badge px-5 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm font-medium shadow-md transition">${s}</span>`).join('');
+            document.getElementById("experience-list").innerHTML = portfolioData.experiences.map(exp => `
                 <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-purple-500 transition-all hover:shadow-xl">
                     <h3 class="text-xl font-bold">${exp.title}</h3>
                     <p class="text-blue-600 dark:text-blue-400 font-semibold">${exp.company} | ${exp.period}</p>
@@ -505,10 +631,7 @@
                     <p class="text-gray-600 dark:text-gray-300 text-sm mt-3">${exp.description}</p>
                 </div>
             `).join('');
-            
-            // Education
-            const eduContainer = document.getElementById("education-list");
-            eduContainer.innerHTML = portfolioData.education.map(edu => `
+            document.getElementById("education-list").innerHTML = portfolioData.education.map(edu => `
                 <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-green-500">
                     <h3 class="text-xl font-bold">${edu.degree}</h3>
                     <p class="text-green-600 dark:text-green-400 font-semibold">${edu.school}</p>
@@ -517,33 +640,25 @@
                     ${edu.focus ? `<p class="text-gray-500 text-sm mt-2">Focus: ${edu.focus}</p>` : ''}
                 </div>
             `).join('');
-            
-            // LinkedIn-style Projects
-            const linkedinProjectsContainer = document.getElementById("linkedin-projects-container");
-            linkedinProjectsContainer.innerHTML = portfolioData.linkedinProjects.map(proj => `
+            document.getElementById("linkedin-projects-container").innerHTML = portfolioData.linkedinProjects.map(proj => `
                 <div class="linkedin-project-card bg-white dark:bg-gray-800/70 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
                     <div class="flex justify-between items-start mb-3">
                         <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400">${proj.name}</h3>
                         <span class="text-xs text-gray-500">${proj.year}</span>
                     </div>
                     <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">${proj.description}</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        ${proj.tech.map(t => `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md text-xs">${t}</span>`).join('')}
-                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">${proj.tech.map(t => `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md text-xs">${t}</span>`).join('')}</div>
                     <a href="${proj.link}" class="text-blue-500 text-sm hover:underline inline-flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
             `).join('');
-            
-            // Certifications
-            const certContainer = document.getElementById("certifications-list");
-            certContainer.innerHTML = portfolioData.certifications.map(cert => `
+            document.getElementById("certifications-list").innerHTML = portfolioData.certifications.map(cert => `
                 <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800/80 shadow-md hover:shadow-blue-300/30 transition">
                     <div class="flex items-start gap-3"><i class="fas fa-certificate text-2xl text-green-600"></i><div><h3 class="font-bold">${cert.name}</h3><p class="text-sm text-gray-500">${cert.issuer} • ${cert.year}</p></div></div>
                 </div>
             `).join('');
         }
 
-        // GitHub API fetch with cache busting to reflect profile changes
+        // Force refresh profile image from GitHub with cache busting
         async function fetchGitHubData() {
             try {
                 const timestamp = Date.now();
@@ -553,10 +668,9 @@
                     document.getElementById("gh-repos-count").innerText = user.public_repos || 0;
                     document.getElementById("gh-followers").innerText = user.followers || 0;
                     if (user.location) document.getElementById("gh-location").innerText = user.location;
-                    // Force refresh profile image from GitHub (bypass cache)
                     const profileImg = document.getElementById("profile-img");
                     if (profileImg && user.avatar_url) {
-                        profileImg.src = `${user.avatar_url}&t=${timestamp}`;
+                        profileImg.src = `${user.avatar_url}?t=${timestamp}`;
                     }
                 }
                 const reposRes = await fetch(`https://api.github.com/users/getnet21/repos?sort=updated&per_page=6&t=${timestamp}`);
@@ -576,52 +690,29 @@
                     }
                 }
             } catch (err) {
-                console.warn("GitHub fetch limited");
                 document.getElementById("projects-container").innerHTML = `<div class="col-span-full text-center py-12">⚠️ Unable to load GitHub repos.</div>`;
             }
         }
 
         // Contact form
-        const contactForm = document.getElementById("contact-form");
-        const formStatus = document.getElementById("form-status");
-        
-        contactForm.addEventListener("submit", async (e) => {
+        document.getElementById("contact-form").addEventListener("submit", async (e) => {
             e.preventDefault();
             const name = document.getElementById("form-name").value;
             const email = document.getElementById("form-email").value;
             const subject = document.getElementById("form-subject").value;
             const message = document.getElementById("form-message").value;
-            
-            formStatus.innerHTML = '<span class="text-blue-500"><i class="fas fa-spinner fa-pulse"></i> Sending...</span>';
-            
+            const statusDiv = document.getElementById("form-status");
+            statusDiv.innerHTML = '<span class="text-blue-500"><i class="fas fa-spinner fa-pulse"></i> Sending...</span>';
             setTimeout(() => {
                 const messages = JSON.parse(localStorage.getItem("portfolio_messages") || "[]");
                 messages.push({ name, email, subject, message, timestamp: new Date().toISOString() });
                 localStorage.setItem("portfolio_messages", JSON.stringify(messages));
-                formStatus.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.</span>';
-                contactForm.reset();
-                setTimeout(() => formStatus.innerHTML = "", 4000);
+                statusDiv.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.</span>';
+                document.getElementById("contact-form").reset();
+                setTimeout(() => statusDiv.innerHTML = "", 4000);
             }, 800);
         });
 
-        // Dark mode
-        function initDarkMode() {
-            const toggle = document.getElementById("theme-toggle");
-            const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-            if (isDark) document.documentElement.classList.add("dark");
-            else document.documentElement.classList.remove("dark");
-            toggle?.addEventListener("click", () => {
-                if (document.documentElement.classList.contains("dark")) {
-                    document.documentElement.classList.remove("dark");
-                    localStorage.setItem("theme", "light");
-                } else {
-                    document.documentElement.classList.add("dark");
-                    localStorage.setItem("theme", "dark");
-                }
-            });
-        }
-
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function(e) {
                 const href = this.getAttribute("href");
@@ -633,7 +724,6 @@
 
         populateUI();
         fetchGitHubData();
-        initDarkMode();
     </script>
 </body>
 </html>
