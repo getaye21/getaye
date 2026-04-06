@@ -250,6 +250,14 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
         }
+        
+        /* Image upload hint */
+        .image-hint {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 8px;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="light">
@@ -286,12 +294,10 @@
                     </div>
                 </div>
                 
-                <!-- Dark/Light Mode Toggle - Sun Icon -->
+                <!-- Dark/Light Mode Toggle -->
                 <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
                     <i id="theme-icon" class="fas fa-sun text-yellow-500"></i>
                 </button>
-                
-                <!-- Removed GitHub and LinkedIn icons from navbar as requested -->
             </div>
         </div>
     </nav>
@@ -320,15 +326,17 @@
             </div>
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
+                    <!-- Profile Image - Using GitHub avatar as reliable fallback -->
+                    <!-- To use your Imgur image: Right-click on your Imgur image, select "Copy image address", and replace the URL below -->
                     <img id="profile-img" 
-                         src="https://imgur.com/a/getnet21-aXJdKCn" 
+                         src="https://avatars.githubusercontent.com/u/55698552?v=4" 
                          alt="Getaye Fiseha"
-                         onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/55698552?v=4'"
                          class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl profile-img">
                     <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg animate-pulse">
                         <i class="fas fa-laptop-code text-white text-xl"></i>
                     </div>
                 </div>
+                <div class="image-hint text-gray-400">Profile photo: GitHub avatar active</div>
             </div>
         </section>
 
@@ -374,11 +382,11 @@
             <div id="education-list" class="grid md:grid-cols-2 gap-6"></div>
         </section>
 
-        <!-- LinkedIn-Style Projects Section -->
+        <!-- Featured Projects Section (LinkedIn-style with BSc Thesis) -->
         <section id="projects" class="py-12 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Featured Projects</h2>
-                <p class="text-gray-500 mt-2">From my portfolio and research work</p>
+                <p class="text-gray-500 mt-2">From my research, thesis, and portfolio work</p>
             </div>
             <div id="linkedin-projects-container" class="grid md:grid-cols-2 gap-8"></div>
         </section>
@@ -557,10 +565,9 @@
 
         // ==================== PORTFOLIO DATA ====================
         const portfolioData = {
-            // Changed primary title to "System and Database Officer"
             titles: ["System and Database Officer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
             bio: "Dedicated System and Database Officer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving at Ahadu Bank, managing mission-critical systems while pursuing MSc in Computer Science at AAU.",
-            aboutFull: "I am a passionate IT professional currently working as a System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python.",
+            aboutFull: "I am a passionate IT professional currently working as a System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python. I've developed machine learning models using AdaBoost and built student management systems. I'm deeply interested in research guidance, distributed computing, and prompt engineering.",
             experiences: [
                 { title: "System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
                 { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel." },
@@ -572,10 +579,11 @@
                 { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network Security, Distributed Computing, Research Methods" },
                 { degree: "Bachelor of Science - Electrical and Computer Engineering", school: "Wollo University", year: "Oct 2018 – Sep 2023", gpa: "3.91" }
             ],
+            // Updated projects: BSc thesis added, Distributed Computing Research replaced
             linkedinProjects: [
                 { name: "Social Media Addiction Risk Analyzer", description: "Machine Learning application using AdaBoost algorithm for addiction test and usage analysis. Developed predictive models to assess social media addiction risk levels.", tech: ["Python", "Scikit-learn", "AdaBoost", "Pandas"], year: "2026", link: "#" },
                 { name: "AAU Student Management System", description: "A complete student management platform built on Supabase cloud database with full CRUD operations, authentication, and responsive UI.", tech: ["React", "Supabase", "Tailwind CSS", "REST API"], year: "2025", link: "#" },
-                { name: "Distributed Computing Research", description: "Research on distributed systems and data management, focusing on scalable architectures and fault-tolerant computing.", tech: ["Distributed Systems", "Cloud Computing", "Research"], year: "2025-2026", link: "#" }
+                { name: "Performance Analysis of MIMO-OFDM System Channel Estimation in the presence of Inter-Carrier-Interference (ICI)", description: "BSc Thesis (2023) - Performance analysis of MIMO-OFDM system channel estimation techniques under ICI conditions using MATLAB simulations. Investigated various channel estimation algorithms and their effectiveness in mitigating ICI in high-mobility environments.", tech: ["MATLAB", "MIMO-OFDM", "Signal Processing", "Channel Estimation"], year: "2023", link: "#" }
             ],
             certifications: [
                 { name: "Introduction to Cybersecurity", issuer: "Cisco", year: "Mar 2026" },
@@ -594,6 +602,7 @@
                 "Infrastructure Engineering", "Cloud Database (DBaaS)", "Distributed Computing",
                 "Python", "React.js", "Node.js", "JavaScript", "Tailwind CSS", "REST APIs",
                 "Machine Learning", "Prompt Engineering", "Research Guidance", "AdaBoost",
+                "MATLAB", "Signal Processing", "MIMO-OFDM",
                 "Docker", "Git", "Microsoft Products", "Operating Systems"
             ],
             contact: { email: "getayefiseha21@gmail.com", phone: "+251-980574725", location: "Addis Ababa, Ethiopia" }
@@ -657,7 +666,7 @@
             `).join('');
         }
 
-        // Force refresh profile image and GitHub data
+        // GitHub API fetch
         async function fetchGitHubData() {
             try {
                 const timestamp = Date.now();
@@ -667,7 +676,6 @@
                     document.getElementById("gh-repos-count").innerText = user.public_repos || 0;
                     document.getElementById("gh-followers").innerText = user.followers || 0;
                     if (user.location) document.getElementById("gh-location").innerText = user.location;
-                    // Only set GitHub avatar if Imgur fails (onerror already handles fallback)
                 }
                 const reposRes = await fetch(`https://api.github.com/users/getnet21/repos?sort=updated&per_page=6&t=${timestamp}`);
                 if (reposRes.ok) {
