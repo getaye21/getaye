@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Getaye Fiseha Tadesse | System Admin & Infrastructure Engineer</title>
+    <title>Getaye Fiseha Tadesse | System and Database Officer</title>
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -291,8 +291,7 @@
                     <i id="theme-icon" class="fas fa-sun text-yellow-500"></i>
                 </button>
                 
-                <a href="https://github.com/getnet21" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-github text-xl"></i></a>
-                <a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-linkedin text-xl"></i></a>
+                <!-- Removed GitHub and LinkedIn icons from navbar as requested -->
             </div>
         </div>
     </nav>
@@ -322,9 +321,9 @@
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
                     <img id="profile-img" 
-                         src="https://avatars.githubusercontent.com/u/55698552?v=4" 
+                         src="https://imgur.com/a/getnet21-aXJdKCn" 
                          alt="Getaye Fiseha"
-                         onerror="this.src='https://ui-avatars.com/api/?name=Getaye+Fiseha&background=3B82F6&color=fff&size=200'"
+                         onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/55698552?v=4'"
                          class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl profile-img">
                     <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg animate-pulse">
                         <i class="fas fa-laptop-code text-white text-xl"></i>
@@ -362,7 +361,7 @@
         <section id="experience" class="py-12 scroll-mt-20">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold inline-block border-b-4 border-purple-500 pb-2">Work Experience</h2>
-                <p class="text-gray-500 mt-2">System Admin | Full Stack | AI Engineer | Infrastructure Engineer</p>
+                <p class="text-gray-500 mt-2">System and Database Officer | Full Stack Developer | AI Engineer</p>
             </div>
             <div id="experience-list" class="grid md:grid-cols-2 gap-8"></div>
         </section>
@@ -441,12 +440,12 @@
         </section>
 
         <footer class="py-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 text-sm">
-            <p>© 2026 Getaye Fiseha Tadesse — System Administrator | Full Stack Developer | AI Engineer | Infrastructure Engineer</p>
+            <p>© 2026 Getaye Fiseha Tadesse — System and Database Officer | Full Stack Developer | AI Engineer | Infrastructure Engineer</p>
         </footer>
     </main>
 
     <script>
-        // ==================== THEME TOGGLE (Sun Icon - Changes entire page) ====================
+        // ==================== THEME TOGGLE ====================
         function initTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             const body = document.body;
@@ -491,7 +490,6 @@
                 }
             }
             
-            // Refresh background particle colors
             if (window.particlesRefresh) window.particlesRefresh();
         }
         
@@ -559,11 +557,12 @@
 
         // ==================== PORTFOLIO DATA ====================
         const portfolioData = {
-            titles: ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
-            bio: "Results-driven System Administrator and Infrastructure Engineer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving as Junior System and Database Officer at Ahadu Bank.",
-            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python.",
+            // Changed primary title to "System and Database Officer"
+            titles: ["System and Database Officer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
+            bio: "Dedicated System and Database Officer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving at Ahadu Bank, managing mission-critical systems while pursuing MSc in Computer Science at AAU.",
+            aboutFull: "I am a passionate IT professional currently working as a System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python.",
             experiences: [
-                { title: "Junior System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
+                { title: "System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
                 { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel." },
                 { title: "AI Engineer (Research)", company: "Addis Ababa University", period: "2025 - Present", location: "Addis Ababa", description: "Research Guidance in Machine Learning, developing predictive models using AdaBoost algorithm for social media addiction detection." },
                 { title: "Information Technology Trainee", company: "Ahadu Bank", period: "Jul 2024 - Mar 2025", location: "Ethiopia", description: "Branch Support, Database Administration, Active Directory, Mail Exchange, Hyper-Converged Infrastructure (Nutanix), Network monitoring." },
@@ -658,7 +657,7 @@
             `).join('');
         }
 
-        // Force refresh profile image from GitHub with cache busting
+        // Force refresh profile image and GitHub data
         async function fetchGitHubData() {
             try {
                 const timestamp = Date.now();
@@ -668,10 +667,7 @@
                     document.getElementById("gh-repos-count").innerText = user.public_repos || 0;
                     document.getElementById("gh-followers").innerText = user.followers || 0;
                     if (user.location) document.getElementById("gh-location").innerText = user.location;
-                    const profileImg = document.getElementById("profile-img");
-                    if (profileImg && user.avatar_url) {
-                        profileImg.src = `${user.avatar_url}?t=${timestamp}`;
-                    }
+                    // Only set GitHub avatar if Imgur fails (onerror already handles fallback)
                 }
                 const reposRes = await fetch(`https://api.github.com/users/getnet21/repos?sort=updated&per_page=6&t=${timestamp}`);
                 if (reposRes.ok) {
