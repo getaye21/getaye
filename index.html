@@ -185,9 +185,11 @@
             border-radius: 10px;
         }
         
+        /* Profile image - perfect fit with object-fit cover */
         .profile-img {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             object-fit: cover;
+            object-position: center;
         }
         
         .profile-img:hover {
@@ -250,6 +252,15 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
         }
+        
+        /* Section Navigation Buttons */
+        .section-nav-btn {
+            transition: all 0.2s ease;
+        }
+        .section-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
     </style>
 </head>
 <body class="light">
@@ -306,19 +317,24 @@
                     <p id="dynamic-title" class="font-medium"></p>
                 </div>
                 <p id="dynamic-bio" class="text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed"></p>
-                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-3">
-                    <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fas fa-paper-plane"></i> Send Message</a>
-                    <a href="#projects" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub Projects</a>
+                
+                <!-- Section Navigation Buttons (replacing GitHub stats) -->
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start pt-3">
+                    <a href="#experience" class="section-nav-btn px-4 py-2 bg-blue-500/10 hover:bg-blue-500 text-blue-600 dark:text-blue-400 hover:text-white rounded-lg transition flex items-center gap-2 text-sm font-medium"><i class="fas fa-briefcase"></i> Experience</a>
+                    <a href="#skills" class="section-nav-btn px-4 py-2 bg-purple-500/10 hover:bg-purple-500 text-purple-600 dark:text-purple-400 hover:text-white rounded-lg transition flex items-center gap-2 text-sm font-medium"><i class="fas fa-cogs"></i> Skills</a>
+                    <a href="#projects" class="section-nav-btn px-4 py-2 bg-green-500/10 hover:bg-green-500 text-green-600 dark:text-green-400 hover:text-white rounded-lg transition flex items-center gap-2 text-sm font-medium"><i class="fas fa-code-branch"></i> Projects</a>
+                    <a href="#certifications" class="section-nav-btn px-4 py-2 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-600 dark:text-yellow-400 hover:text-white rounded-lg transition flex items-center gap-2 text-sm font-medium"><i class="fas fa-certificate"></i> Certs</a>
+                    <a href="#contact" class="section-nav-btn px-4 py-2 bg-red-500/10 hover:bg-red-500 text-red-600 dark:text-red-400 hover:text-white rounded-lg transition flex items-center gap-2 text-sm font-medium"><i class="fas fa-envelope"></i> Contact</a>
                 </div>
-                <div class="flex flex-wrap gap-6 pt-6 justify-center md:justify-start text-sm">
-                    <div class="flex items-center gap-2"><i class="fab fa-github text-blue-500 text-xl"></i> <span id="gh-repos-count" class="font-bold">0</span> <span>repositories</span></div>
-                    <div class="flex items-center gap-2"><i class="fas fa-users text-blue-500 text-xl"></i> <span id="gh-followers" class="font-bold">0</span> <span>followers</span></div>
-                    <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-blue-500 text-xl"></i> <span id="gh-location">Addis Ababa, Ethiopia</span></div>
+                
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                    <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fas fa-paper-plane"></i> Send Message</a>
+                    <a href="https://github.com/getnet21" target="_blank" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub Profile</a>
                 </div>
             </div>
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
-                    <!-- NEW PROFILE IMAGE - Updated with your i.ibb.co URL -->
+                    <!-- Profile Image - Perfect fit with object-fit cover -->
                     <img id="profile-img" 
                          src="https://i.ibb.co/wrPd0w4F/5821188799877727355.jpg" 
                          alt="Getaye Fiseha"
@@ -663,9 +679,7 @@
                 const userRes = await fetch(`https://api.github.com/users/getnet21?t=${timestamp}`);
                 if (userRes.ok) {
                     const user = await userRes.json();
-                    document.getElementById("gh-repos-count").innerText = user.public_repos || 0;
-                    document.getElementById("gh-followers").innerText = user.followers || 0;
-                    if (user.location) document.getElementById("gh-location").innerText = user.location;
+                    // Still fetch for profile but not displaying stats
                 }
                 const reposRes = await fetch(`https://api.github.com/users/getnet21/repos?sort=updated&per_page=6&t=${timestamp}`);
                 if (reposRes.ok) {
