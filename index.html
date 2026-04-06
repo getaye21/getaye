@@ -70,6 +70,12 @@
             100% { background-position: 100% 50%; }
         }
         
+        @keyframes borderPulse {
+            0% { border-color: rgba(59,130,246,0.3); box-shadow: 0 0 0 0 rgba(59,130,246,0.2); }
+            50% { border-color: rgba(59,130,246,0.8); box-shadow: 0 0 0 8px rgba(59,130,246,0.1); }
+            100% { border-color: rgba(59,130,246,0.3); box-shadow: 0 0 0 0 rgba(59,130,246,0); }
+        }
+        
         .animate-fade-up {
             animation: fadeInUp 0.6s ease-out forwards;
         }
@@ -102,6 +108,16 @@
         .glass-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .opportunity-card {
+            background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1));
+            border: 1px solid rgba(59,130,246,0.3);
+            animation: borderPulse 2s infinite;
+        }
+        
+        .dark .opportunity-card {
+            background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15));
         }
         
         .skill-badge {
@@ -162,6 +178,15 @@
             transform: scale(1.02);
             box-shadow: 0 0 0 5px rgba(59,130,246,0.3);
         }
+        
+        /* LinkedIn-style project card */
+        .linkedin-project-card {
+            transition: all 0.3s ease;
+        }
+        .linkedin-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -12px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
@@ -180,8 +205,8 @@
                 <a href="#about" class="hidden md:inline-block hover:text-blue-500 transition">About</a>
                 <a href="#experience" class="hidden md:inline-block hover:text-blue-500 transition">Experience</a>
                 <a href="#skills" class="hidden md:inline-block hover:text-blue-500 transition">Skills</a>
-                <a href="#certifications" class="hidden md:inline-block hover:text-blue-500 transition">Certs</a>
                 <a href="#projects" class="hidden md:inline-block hover:text-blue-500 transition">Projects</a>
+                <a href="#certifications" class="hidden md:inline-block hover:text-blue-500 transition">Certs</a>
                 <a href="#contact" class="hidden md:inline-block hover:text-blue-500 transition">Contact</a>
                 <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
                     <i class="fas fa-moon dark:hidden text-gray-700"></i>
@@ -196,11 +221,8 @@
     <main class="container mx-auto px-6 md:px-12 py-8 max-w-6xl relative z-10">
         
         <!-- Hero Section -->
-        <section id="home" class="min-h-[85vh] flex flex-col justify-center items-center text-center md:text-left md:items-start md:flex-row md:justify-between gap-12 py-10">
+        <section id="home" class="min-h-[80vh] flex flex-col justify-center items-center text-center md:text-left md:items-start md:flex-row md:justify-between gap-12 py-10">
             <div class="flex-1 space-y-5">
-                <div class="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-2 animate-pulse">
-                    <i class="fas fa-code mr-1"></i> Available for opportunities
-                </div>
                 <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
                     Hi, I'm <span class="gradient-text">Getaye Fiseha</span>
                 </h1>
@@ -220,10 +242,10 @@
             </div>
             <div class="flex-1 flex justify-center">
                 <div class="relative animate-float">
-                    <!-- PROFILE PHOTO - Replace the src URL with your direct image link -->
                     <img id="profile-img" 
                          src="https://avatars.githubusercontent.com/getnet21" 
                          alt="Getaye Fiseha"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Getaye+Fiseha&background=3B82F6&color=fff&size=200'"
                          class="w-56 h-56 md:w-72 md:h-72 rounded-full border-4 border-blue-500 shadow-2xl profile-img">
                     <div class="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-3 shadow-lg animate-pulse">
                         <i class="fas fa-laptop-code text-white text-xl"></i>
@@ -274,6 +296,26 @@
             <div id="education-list" class="grid md:grid-cols-2 gap-6"></div>
         </section>
 
+        <!-- LinkedIn-Style Projects Section (from your LinkedIn) -->
+        <section id="projects" class="py-12 scroll-mt-20">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Featured Projects</h2>
+                <p class="text-gray-500 mt-2">From my portfolio and research work</p>
+            </div>
+            <div id="linkedin-projects-container" class="grid md:grid-cols-2 gap-8"></div>
+        </section>
+
+        <!-- GitHub Repositories Section -->
+        <section class="py-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold inline-block border-b-4 border-indigo-500 pb-2">GitHub Repositories</h2>
+                <p class="text-gray-500 mt-2">Fetched from github.com/getnet21</p>
+            </div>
+            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="col-span-full flex justify-center py-12"><div class="spinner"></div></div>
+            </div>
+        </section>
+
         <!-- Certifications Section -->
         <section id="certifications" class="py-12 scroll-mt-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-3xl my-6 p-6">
             <div class="text-center mb-10">
@@ -282,16 +324,14 @@
             <div id="certifications-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </section>
 
-        <!-- GitHub Projects Section -->
-        <section id="projects" class="py-12 scroll-mt-20">
-            <div class="text-center mb-10">
-                <h2 class="text-4xl font-bold inline-block border-b-4 border-blue-500 pb-2">Live GitHub Projects</h2>
-                <p class="text-gray-500 mt-2">Fetched from github.com/getnet21</p>
+        <!-- Available Opportunities Banner (Above Contact) -->
+        <div class="my-8 opportunity-card rounded-2xl p-6 text-center backdrop-blur-sm">
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold animate-pulse"><i class="fas fa-bullhorn mr-2"></i> Available for Opportunities</span>
+                <p class="text-gray-700 dark:text-gray-200 font-medium">🌍 Remote | 💼 Full-time Jobs | 🎓 Scholarships | 🤝 Startup Partnerships</p>
+                <a href="#contact" class="ml-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition text-sm">Let's Connect →</a>
             </div>
-            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="col-span-full flex justify-center py-12"><div class="spinner"></div></div>
-            </div>
-        </section>
+        </div>
 
         <!-- Contact Section -->
         <section id="contact" class="py-16 scroll-mt-20">
@@ -322,16 +362,15 @@
         </section>
 
         <footer class="py-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 text-sm">
-            <p>© 2025 Getaye Fiseha Tadesse — System Administrator | Full Stack Developer | AI Engineer | Infrastructure Engineer</p>
+            <p>© 2026 Getaye Fiseha Tadesse — System Administrator | Full Stack Developer | AI Engineer | Infrastructure Engineer</p>
         </footer>
     </main>
 
     <script>
-        // Animated Background
+        // ==================== ANIMATED BACKGROUND ====================
         const canvas = document.getElementById('bg-canvas');
         let ctx = canvas.getContext('2d');
         let particles = [];
-        let animationId = null;
         
         function initCanvas() {
             canvas.width = window.innerWidth;
@@ -378,19 +417,19 @@
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
             }
-            animationId = requestAnimationFrame(drawBackground);
+            requestAnimationFrame(drawBackground);
         }
         
         window.addEventListener('resize', () => { initCanvas(); });
         initCanvas();
         drawBackground();
 
-        // Portfolio Data
+        // ==================== PORTFOLIO DATA ====================
         const portfolioData = {
             name: "Getaye Fiseha Tadesse",
             titles: ["System Administrator", "Network and Electronic Communication Engineer", "Full Stack Developer", "AI Engineer", "Infrastructure Engineer"],
-            bio: "Results-driven System Administrator and Infrastructure Engineer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving as Junior System and Database Officer at Ahadu Bank, managing mission-critical systems while pursuing MSc in Computer Science at AAU.",
-            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python. I've developed machine learning models using AdaBoost and built student management systems. I'm deeply interested in research guidance, distributed computing, and prompt engineering.\n\nI thrive in environments that challenge me to solve complex infrastructure problems, whether it's optimizing database performance, managing enterprise systems, or architecting scalable applications.",
+            bio: "Results-driven System Administrator and Infrastructure Engineer with expertise in Oracle Database, Nutanix virtualization, Active Directory, and enterprise IT infrastructure. Currently serving as Junior System and Database Officer at Ahadu Bank.",
+            aboutFull: "I am a passionate IT professional currently working as a Junior System and Database Officer at Ahadu Bank, where I manage Active Directory, Oracle Database, Nutanix Prism virtualization, and mail exchange systems. With a strong foundation in Electrical and Computer Engineering from Wollo University (GPA: 3.91) and ongoing MSc in Computer Science at Addis Ababa University, I bridge the gap between infrastructure engineering and modern software development.\n\nMy technical expertise includes Linux system administration, virtualization (Nutanix AHV), hyper-converged infrastructure, cloud databases, and full-stack development with React, Node.js, and Python. I've developed machine learning models using AdaBoost and built student management systems. I'm deeply interested in research guidance, distributed computing, and prompt engineering.",
             experiences: [
                 { title: "Junior System and Database Officer", company: "Ahadu Bank", period: "Apr 2025 - Present", location: "Addis Ababa", description: "Managing Active Directory, Oracle Database, Nutanix Prism/AHV virtualization, Mail Exchange, Group Policy, DNS, Web Application Proxy (WAP), AD-FS, and enterprise IT infrastructure." },
                 { title: "Full Stack Developer (Freelance)", company: "Self-employed", period: "2024 - Present", location: "Remote", description: "Building web applications with React, Node.js, Python/Django, cloud databases (DBaaS), and deploying on Vercel." },
@@ -401,6 +440,12 @@
             education: [
                 { degree: "Master of Science - Computer Science", school: "Addis Ababa University (AAU)", year: "Oct 2025 – Jul 2028", focus: "Network Security, Distributed Computing, Research Methods" },
                 { degree: "Bachelor of Science - Electrical and Computer Engineering", school: "Wollo University", year: "Oct 2018 – Sep 2023", gpa: "3.91" }
+            ],
+            // LinkedIn-style projects (from your actual LinkedIn)
+            linkedinProjects: [
+                { name: "Social Media Addiction Risk Analyzer", description: "Machine Learning application using AdaBoost algorithm for addiction test and usage analysis. Developed predictive models to assess social media addiction risk levels.", tech: ["Python", "Scikit-learn", "AdaBoost", "Pandas"], year: "2026", link: "#" },
+                { name: "AAU Student Management System", description: "A complete student management platform built on Supabase cloud database with full CRUD operations, authentication, and responsive UI.", tech: ["React", "Supabase", "Tailwind CSS", "REST API"], year: "2025", link: "#" },
+                { name: "Distributed Computing Research", description: "Research on distributed systems and data management, focusing on scalable architectures and fault-tolerant computing.", tech: ["Distributed Systems", "Cloud Computing", "Research"], year: "2025-2026", link: "#" }
             ],
             certifications: [
                 { name: "Introduction to Cybersecurity", issuer: "Cisco", year: "Mar 2026" },
@@ -446,9 +491,11 @@
             document.getElementById("contact-email").innerHTML = portfolioData.contact.email;
             document.getElementById("contact-phone").innerHTML = portfolioData.contact.phone;
             
+            // Skills
             const skillsContainer = document.getElementById("skills-container");
             skillsContainer.innerHTML = portfolioData.skills.map(s => `<span class="skill-badge px-5 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm font-medium shadow-md transition">${s}</span>`).join('');
             
+            // Experience
             const expContainer = document.getElementById("experience-list");
             expContainer.innerHTML = portfolioData.experiences.map(exp => `
                 <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-purple-500 transition-all hover:shadow-xl">
@@ -459,6 +506,7 @@
                 </div>
             `).join('');
             
+            // Education
             const eduContainer = document.getElementById("education-list");
             eduContainer.innerHTML = portfolioData.education.map(edu => `
                 <div class="p-6 rounded-xl bg-white dark:bg-gray-800/70 shadow-lg border-l-4 border-green-500">
@@ -470,6 +518,23 @@
                 </div>
             `).join('');
             
+            // LinkedIn-style Projects
+            const linkedinProjectsContainer = document.getElementById("linkedin-projects-container");
+            linkedinProjectsContainer.innerHTML = portfolioData.linkedinProjects.map(proj => `
+                <div class="linkedin-project-card bg-white dark:bg-gray-800/70 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400">${proj.name}</h3>
+                        <span class="text-xs text-gray-500">${proj.year}</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">${proj.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${proj.tech.map(t => `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md text-xs">${t}</span>`).join('')}
+                    </div>
+                    <a href="${proj.link}" class="text-blue-500 text-sm hover:underline inline-flex items-center gap-1">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `).join('');
+            
+            // Certifications
             const certContainer = document.getElementById("certifications-list");
             certContainer.innerHTML = portfolioData.certifications.map(cert => `
                 <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800/80 shadow-md hover:shadow-blue-300/30 transition">
@@ -478,16 +543,23 @@
             `).join('');
         }
 
+        // GitHub API fetch with cache busting to reflect profile changes
         async function fetchGitHubData() {
             try {
-                const userRes = await fetch("https://api.github.com/users/getnet21");
+                const timestamp = Date.now();
+                const userRes = await fetch(`https://api.github.com/users/getnet21?t=${timestamp}`);
                 if (userRes.ok) {
                     const user = await userRes.json();
                     document.getElementById("gh-repos-count").innerText = user.public_repos || 0;
                     document.getElementById("gh-followers").innerText = user.followers || 0;
                     if (user.location) document.getElementById("gh-location").innerText = user.location;
+                    // Force refresh profile image from GitHub (bypass cache)
+                    const profileImg = document.getElementById("profile-img");
+                    if (profileImg && user.avatar_url) {
+                        profileImg.src = `${user.avatar_url}&t=${timestamp}`;
+                    }
                 }
-                const reposRes = await fetch("https://api.github.com/users/getnet21/repos?sort=updated&per_page=6");
+                const reposRes = await fetch(`https://api.github.com/users/getnet21/repos?sort=updated&per_page=6&t=${timestamp}`);
                 if (reposRes.ok) {
                     const repos = await reposRes.json();
                     const container = document.getElementById("projects-container");
@@ -504,10 +576,12 @@
                     }
                 }
             } catch (err) {
+                console.warn("GitHub fetch limited");
                 document.getElementById("projects-container").innerHTML = `<div class="col-span-full text-center py-12">⚠️ Unable to load GitHub repos.</div>`;
             }
         }
 
+        // Contact form
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
         
@@ -530,6 +604,7 @@
             }, 800);
         });
 
+        // Dark mode
         function initDarkMode() {
             const toggle = document.getElementById("theme-toggle");
             const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
@@ -543,10 +618,10 @@
                     document.documentElement.classList.add("dark");
                     localStorage.setItem("theme", "dark");
                 }
-                if (ctx) drawBackground();
             });
         }
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function(e) {
                 const href = this.getAttribute("href");
