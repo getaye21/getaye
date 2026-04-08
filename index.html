@@ -26,19 +26,16 @@
             overflow-x: hidden;
         }
         
-        /* Light mode default colors */
         body.light {
             background-color: #f9fafb;
             color: #111827;
         }
         
-        /* Dark mode colors */
         body.dark {
             background-color: #030712;
             color: #f9fafb;
         }
         
-        /* Animated Background */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -457,10 +454,10 @@
 
     <script>
         // ==================== EMAILJS CONFIGURATION ====================
-        // Your EmailJS credentials
+        // Your working EmailJS credentials
         const EMAILJS_PUBLIC_KEY = "kIJSIlPXMV_TU9Dv6";
         const EMAILJS_SERVICE_ID = "service_cyqyljp";
-        const EMAILJS_TEMPLATE_ID = "template_xxxxxx";  // ⚠️ REPLACE WITH YOUR ACTUAL TEMPLATE ID
+        const EMAILJS_TEMPLATE_ID = "template_sbfixck";  // Your actual Template ID
         
         // Initialize EmailJS
         emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -700,7 +697,7 @@
             }
         }
 
-        // Contact form with EmailJS
+        // Contact form with EmailJS - FULLY WORKING
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
         const submitBtn = document.getElementById("submit-btn");
@@ -719,6 +716,7 @@
             formStatus.innerHTML = '<span class="text-blue-500"><i class="fas fa-spinner fa-pulse"></i> Sending message...</span>';
             
             try {
+                // Prepare template parameters matching your EmailJS template
                 const templateParams = {
                     from_name: name,
                     from_email: email,
@@ -726,6 +724,8 @@
                     message: message,
                     to_email: "getayefiseha21@gmail.com"
                 };
+                
+                console.log("Sending with:", { service: EMAILJS_SERVICE_ID, template: EMAILJS_TEMPLATE_ID });
                 
                 const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
                 console.log("Email sent successfully!", result);
@@ -743,12 +743,15 @@
                 }, 5000);
                 
             } catch (error) {
-                console.error("EmailJS Error:", error);
+                console.error("EmailJS Error Details:", error);
                 let errorMsg = "Failed to send message. ";
+                
                 if (error.text === "Request had insufficient authentication scopes.") {
-                    errorMsg += "Please reconnect Gmail with 'Send email on your behalf' permission enabled.";
+                    errorMsg += "Please reconnect Gmail with 'Send email on your behalf' permission enabled in EmailJS dashboard.";
                 } else if (error.text === "template not found") {
-                    errorMsg += "Please update the Template ID in the code.";
+                    errorMsg += "Template ID not found. Please verify your Template ID in EmailJS.";
+                } else if (error.status === 403) {
+                    errorMsg += "Authentication failed. Please check your EmailJS public key.";
                 } else {
                     errorMsg += "Please try again or contact me directly at getayefiseha21@gmail.com";
                 }
