@@ -323,7 +323,7 @@
                 
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
                     <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-lg transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fas fa-paper-plane"></i> Send Message</a>
-                    <a href="https://github.com/getnet21" target="_blank" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub Profile</a>
+                    <a href="https://github.com/getaye21" target="_blank" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2"><i class="fab fa-github"></i> GitHub Profile</a>
                 </div>
             </div>
             <div class="flex-1 flex justify-center">
@@ -395,7 +395,7 @@
         <section class="py-12">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold inline-block border-b-4 border-indigo-500 pb-2">GitHub Repositories</h2>
-                <p class="text-gray-500 mt-2">Fetched from github.com/getnet21</p>
+                <p class="text-gray-500 mt-2">Fetched from github.com/getaye21</p>
             </div>
             <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="col-span-full flex justify-center py-12"><div class="spinner"></div></div>
@@ -430,7 +430,7 @@
                         <div class="flex items-center gap-3"><i class="fas fa-phone w-6 text-blue-500"></i><span>+251-980574725</span></div>
                         <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt w-6 text-blue-500"></i><span>Addis Ababa, Ethiopia</span></div>
                         <div class="flex items-center gap-3"><i class="fab fa-linkedin w-6 text-blue-500"></i><a href="https://www.linkedin.com/in/getaye-fiseha-tadesse/" target="_blank" class="hover:text-blue-500">linkedin.com/in/getaye-fiseha-tadesse</a></div>
-                        <div class="flex items-center gap-3"><i class="fab fa-github w-6 text-blue-500"></i><a href="https://github.com/getnet21" target="_blank" class="hover:text-blue-500">github.com/getnet21</a></div>
+                        <div class="flex items-center gap-3"><i class="fab fa-github w-6 text-blue-500"></i><a href="https://github.com/getaye21" target="_blank" class="hover:text-blue-500">github.com/getaye21</a></div>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold mb-4"><i class="fas fa-paper-plane text-blue-500"></i> Send me a message</h3>
@@ -676,7 +676,7 @@
         async function fetchGitHubData() {
             try {
                 const timestamp = Date.now();
-                const reposRes = await fetch(`https://api.github.com/users/getnet21/repos?sort=updated&per_page=6&t=${timestamp}`);
+                const reposRes = await fetch(`https://api.github.com/users/getaye21/repos?sort=updated&per_page=6&t=${timestamp}`);
                 if (reposRes.ok) {
                     const repos = await reposRes.json();
                     const container = document.getElementById("projects-container");
